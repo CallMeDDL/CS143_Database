@@ -2,20 +2,20 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-    <title>Calculator</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Calculator</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- link to Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- link to Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 	<header class="blog-header py-3 bg-warning text-center">
-        <a class="blog-header-logo text-white">
-            <h1>Calculator</h1>
-        </a>
-    </header>
+		<a class="blog-header-logo text-white">
+			<h1>Calculator</h1>
+		</a>
+	</header>
 
-    <br>
+	<br>
 	<div class="container">
 		<div class="row">
 			<div class="col-1"></div>
@@ -36,7 +36,7 @@
 					<input type="text" name="exp">
 				</div>
 				<div class="col-2">
-					<input type="submit" class="btn btn-outline-warning" value="Run" >		
+					<input type="submit" class="btn btn-outline-warning" value="Run" >      
 				</div>
 			</div>
 		</div>
