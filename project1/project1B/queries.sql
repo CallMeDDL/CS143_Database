@@ -11,7 +11,7 @@ FROM	(
 		FROM	MoiveActor
 		JOIN	Actor ON MovieActor.aid = Actor.id
 		GROUP BY	id
-		WHERE	COUNT(MovieActor.aid) > 1
+		HAVING	COUNT(MovieActor.aid) > 1
 ) as A
 
 /*Return the number of directors who was a actor before*/
