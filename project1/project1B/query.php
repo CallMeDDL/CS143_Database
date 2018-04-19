@@ -49,7 +49,7 @@
 				<center>
 					<?php
 					// Establishing a Connection
-					$db = new mysqli('localhost', 'cs143', '', 'TEST');
+					$db = new mysqli('localhost', 'cs143', '', 'CS143');
 					if($db->connect_errno > 0){
 						die('Unable to connect to database [' . $db->connect_error . ']');
 					}
@@ -64,13 +64,25 @@
 						}
 
 						// Retrieving Results
-						while($row = $rs->fetch_assoc()) {
-							$sid = $row['sid'];
-							$name = $row['name'];
-							$email = $row['email'];
-							print "$sid, $name, $email<br />";
+						if ($rs->field_count > 0) {
+							$field = array();
+							print '<table class="table table-bordered" ><thead class="thead-light"><tr>';
+							while ($finfo = $rs->fetch_field()) {
+								$field[] = $finfo->name;
+								print '<th scope="col">' . $finfo->name . '</th>';
+							}
+							print '</tr></thead><tbody>';
+							while($row = $rs->fetch_assoc()) {
+								print '<tr>';
+								for ($i = 0; $i < $rs->field_count; $i++) {
+									print '<td>' . $row[$field[$i]] . '</td>';
+								}
+								print '</tr>';
+							}
+							print '</tbody></table>';
+						}else {
+							print "No result";
 						}
-						print 'Total results: ' . $rs->num_rows;
 
 						// Free Result and Close Database
 						$rs->free();
