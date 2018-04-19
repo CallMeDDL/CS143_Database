@@ -1,29 +1,26 @@
+-- Returns the first and last name string of actors in the movie "Die Another Day"
 
-/*Returns the first and last name string of actors in the movie "Die Another Day"*/
-SELECT CONCAT(Actor.first, ' ', Actor.last)
-FROM  MovieActor, Actor, Movie
-WHERE Movie.title="Die Another Day" AND Actor.id=MovieActor.aid AND MovieActor.mid=Movie.id;
+SELECT CONCAT(first, ' ', last) AS name
+FROM Actor
+INNER JOIN MovieActor ON
+	MovieActor.aid = Actor.id 
+INNER JOIN Movie ON
+	MovieActor.mid = Movie.id AND Movie.title="Die Another Day";
 
-/* Returns the number of actors who acted in multiple movies */
-SELECT	COUNT(id)
-FROM	(
-		SELECT	Actor.id
-		FROM	MoiveActor
-		JOIN	Actor ON MovieActor.aid = Actor.id
-		GROUP BY	id
-		WHERE	COUNT(MovieActor.aid) > 1
-) as A
+-- Returns the number of actors who acted in multiple movies
+SELECT COUNT(aid)
+FROM (
+	SELECT aid
+	FROM MovieActor
+	GROUP BY aid
+	HAVING COUNT(mid) > 1
+)multi_actor;
 
-/*Return the number of directors who was a actor before*/
-SELECT	COUNT(did)
-FROM	(
-		SELECT	Actor.id
-		FROM	Actor
-		JOIN	Director ON Actor.id = Director.id
-		JOIN	MovieActor ON Actor.id = MovieActor.aid
-		JOIN	MovieDirector ON Director.id = MovieDirector.did
-		GROUP BY	Actor.id
-		WHERE	MoiveActor.mid = MovieDirector.mid 
-) as B
-
-
+-- Return the number of directors who are actors at the same time
+SELECT COUNT(did)
+FROM (
+	SELECT did
+	FROM MovieDirector
+	JOIN MovieActor ON 
+		MovieActor.aid = MovieDirector.did
+)actor_director;
