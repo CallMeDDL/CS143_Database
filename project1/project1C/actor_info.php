@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-		<title>Search a Movie</title>
+		<title>Show Actor Information</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- link to Bootstrap -->
@@ -57,47 +57,49 @@
 					<div class="row">
 						<div class="col-1"></div>
 						<div class="col-10">
-							<h2>Search a Movie</h2>
+							<h2>Show Actor Information</h2>
 							<hr style="width: 100%; color: black; height: 1px;" />
 						</div>
 					</div>
 				</div>
-				<form action="search_movie.php" method="get">
-					<div class="container">
-						<div class="row">
-							<div class="col-2"></div>
-							<div class="col-2">Movie name:</div>
-							<div class="col-6">
-								<input type="text" name="name" class="form-control">
-							</div>
-						</div>
-					</div>
-					<br><br>
-					<div class="container">
-						<div class="row">
-							<div class="col-5"></div>
-							<div class="col-2">
-								<input type="submit" class="btn btn-outline-warning btn-block" value="Search"> 
-							</div>
-						</div>
-					</div>
-				</form>
 				<div class="container">
 					<div class="row">
-						<div class="col-1"></div>
+						<div class="col-2"></div>
 						<div class="col-10">
-							<br>
-							<h2>Result</h2>
-							<hr style="width: 100%; color: black; height: 1px;" />
-							<a class="nav-link  text-warning" href="movie_info.php">COCO</a>
-							<center>
-								<?php
-								?>
-							</center>
-							<br><br><br><br><br><br><br>
+							<h5>Actor Information:</h5>
 						</div>
 					</div>
 				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-2"></div>
+						<div class="col-10">
+							<?php
+								echo "test"
+							?>
+						</div>
+					</div>
+				</div>
+				<br><br>
+				<div class="container">
+					<div class="row">
+						<div class="col-2"></div>
+						<div class="col-10">
+							<h5>Actor's Movie Role:</h5>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-2"></div>
+						<div class="col-10">
+							<?php
+								echo "test"
+							?>
+						</div>
+					</div>
+				</div>
+				<br>
 			</div>
 		</div>
 	</div>

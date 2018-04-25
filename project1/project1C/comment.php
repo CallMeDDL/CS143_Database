@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-		<title>Search a Movie</title>
+		<title>Add Movie Comment</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- link to Bootstrap -->
@@ -57,16 +57,16 @@
 					<div class="row">
 						<div class="col-1"></div>
 						<div class="col-10">
-							<h2>Search a Movie</h2>
+							<h2>Add Movie Comment</h2>
 							<hr style="width: 100%; color: black; height: 1px;" />
 						</div>
 					</div>
 				</div>
-				<form action="search_movie.php" method="get">
+				<form action="search_actor.php" method="get">
 					<div class="container">
 						<div class="row">
 							<div class="col-2"></div>
-							<div class="col-2">Movie name:</div>
+							<div class="col-2">Actor name:</div>
 							<div class="col-6">
 								<input type="text" name="name" class="form-control">
 							</div>
@@ -89,8 +89,8 @@
 							<br>
 							<h2>Result</h2>
 							<hr style="width: 100%; color: black; height: 1px;" />
-							<a class="nav-link  text-warning" href="movie_info.php">COCO</a>
 							<center>
+								<a class="nav-link  text-warning" href="actor_info.php">Handsome Tianyi</a>
 								<?php
 								?>
 							</center>

@@ -77,7 +77,7 @@
 						<div class="row">
 							<div class="col-5"></div>
 							<div class="col-2">
-								<input type="submit" class="btn btn-outline-warning btn-block" value="Submit"> 
+								<input type="submit" class="btn btn-outline-warning btn-block" value="Search"> 
 							</div>
 						</div>
 					</div>
@@ -90,6 +90,7 @@
 							<h2>Result</h2>
 							<hr style="width: 100%; color: black; height: 1px;" />
 							<center>
+								<a class="nav-link  text-warning" href="actor_info.php">Handsome Tianyi</a>
 								<?php
 								?>
 							</center>
