@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <title>Add New Movie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- link to Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	<header class="blog-header py-3 bg-warning text-center">
+		<a class="blog-header-logo text-white">
+			<h1>Movie Databse Query Interface</h1>
+		</a>
+	</header>
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-10">
+				<h2>Add Movie Information</h2>
+				<hr style="width: 100%; color: black; height: 1px;" />
+			</div>
+		</div>
+	</div>
+	<form action="add_movie.php" method="get">
+		<div class="container">
+			<div class="row">
+				<div class="col-2"></div>
+				<div class="col-2">Movie title</div>
+				<div class="col-4">
+					<input type="text" name="title" class="form-control">
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-2"></div>
+				<div class="col-2">Year:</div>
+				<div class="col-4">
+					<input type="number" name="year" class="form-control">
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-2"></div>
+				<div class="col-2">MPAA rating:</div>
+				<div class="col-4">
+					<select name="rating" class="form-control"> 
+						<option value="PG-13">PG-13</option> 
+						<option value="R" selected>R</option>
+						<option value="PG">PG</option>
+						<option value="NC-17">NC-17</option>
+						<option value="surrendere">surrendere</option>
+						<option value="G">G</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-2"></div>
+				<div class="col-2">Production company:</div>
+				<div class="col-4">
+					<input type="text" name="company" class="form-control">
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-2"></div>
+				<div class="col-2">Genre:</div>
+				<div class="col-4">
+					<input type="checkbox" name="genre" value="drama">
+					<label for="drama">Drama</label>
+					<input type="checkbox" name="genre" value="comedy">
+					<label for="comedy">Comedy</label>
+					<input type="checkbox" name="genre" value="romance">
+					<label for="romance">Romance</label>
+					<input type="checkbox" name="genre" value="crime">
+					<label for="crime">Crime</label>
+					<input type="checkbox" name="genre" value="horror">
+					<label for="horror">Horror</label>
+					<input type="checkbox" name="genre" value="mystery">
+					<label for="mystery">Mystery</label>
+					<input type="checkbox" name="genre" value="thriller">
+					<label for="thriller">Triller</label>
+					<input type="checkbox" name="genre" value="action">
+					<label for="action">Action</label>
+					<input type="checkbox" name="genre" value="adventure">
+					<label for="adventure">Adventure</label>
+					<input type="checkbox" name="genre" value="fantasy">
+					<label for="fantasy">Fantasy</label>
+					<input type="checkbox" name="genre" value="documentary">
+					<label for="documentary">Documentary</label>
+					<input type="checkbox" name="genre" value="family">
+					<label for="family">Family</label>
+					<input type="checkbox" name="genre" value="sci-fi">
+					<label for="sci-fi">Sci-Fi</label>
+					<input type="checkbox" name="genre" value="animation">
+					<label for="animation">Animation</label>
+					<input type="checkbox" name="genre" value="musical">
+					<label for="musical">Musical</label>
+					<input type="checkbox" name="genre" value="war">
+					<label for="war">War</label>
+					<input type="checkbox" name="genre" value="western">
+					<label for="western">Western</label>
+					<input type="checkbox" name="genre" value="adult">
+					<label for="adult">Adult</label>
+					<input type="checkbox" name="genre" value="short">
+					<label for="short">Short</label>
+				</div>
+			</div>
+		</div>
+		<br><br>
+		<div class="container">
+			<div class="row">
+				<div class="col-3"></div>
+				<div class="col-4">
+					<input type="submit" class="btn btn-outline-warning" value="Submit"> 
+				</div>
+			</div>
+		</div>
+	</form>
+	<div class="container">
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-10">
+				<br>
+				<h2>Result</h2>
+				<hr style="width: 100%; color: black; height: 1px;" />
+				<center>
+					<?php
+					?>
+				</center>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
