@@ -20,6 +20,7 @@
 				<br>
 				<div class="sidebar-sticky">
 					<ul class="nav flex-column">
+						<h5>Input Option</h5>
 						<li class="nav-item">
 							<a class="nav-link  text-warning" href="add_people.php">Add an Actor or Director</a>
 						</li>
@@ -27,7 +28,25 @@
 							<a class="nav-link text-warning" href="add_movie.php">Add Movie Information</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link text-warning" href="movie_actor.php">Add Movie and Actor Relation</a>
+							<a class="nav-link text-warning" href="search_movie.php">Add Movie Comment</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-warning" href="search_movie.php">Add Movie and Actor Relation</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-warning" href="search_movie.php">Add Movie and Director Relation</a>
+						</li>
+					</ul>
+				</div>
+				<br><br>
+				<div class="sidebar-sticky">
+					<ul class="nav flex-column">
+						<h5>Browsing Option</h5>
+						<li class="nav-item">
+							<a class="nav-link  text-warning" href="search_actor.php">Show Actor Information</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link  text-warning" href="search_movie.php">Show Movie Information</a>
 						</li>
 					</ul>
 				</div>
@@ -48,7 +67,7 @@
 						<div class="row">
 							<div class="col-2"></div>
 							<div class="col-2">Type:</div>
-							<div class="col-4">
+							<div class="col-6">
 								<input type="radio" name="type" value="actor">
 								<label for="contactChoice1">Actor</label>
 								<input type="radio" name="type" value="director">
@@ -61,7 +80,7 @@
 						<div class="row">
 							<div class="col-2"></div>
 							<div class="col-2">First name:</div>
-							<div class="col-4">
+							<div class="col-6">
 								<input type="text" name="fname" class="form-control">
 							</div>
 						</div>
@@ -71,7 +90,7 @@
 						<div class="row">
 							<div class="col-2"></div>
 							<div class="col-2">Last name:</div>
-							<div class="col-4">
+							<div class="col-6">
 								<input type="text" name="lname" class="form-control">
 							</div>
 						</div>
@@ -81,7 +100,7 @@
 						<div class="row">
 							<div class="col-2"></div>
 							<div class="col-2">Sex:</div>
-							<div class="col-4">
+							<div class="col-6">
 								<input type="radio" name="sex" value="male">
 								<label for="contactChoice1">Male</label>
 								<input type="radio" name="sex" value="female">
@@ -94,7 +113,7 @@
 						<div class="row">
 							<div class="col-2"></div>
 							<div class="col-2">Date of birth:</div>
-							<div class="col-4">
+							<div class="col-6">
 								<input type="text" name="birth" class="form-control">
 							</div>
 						</div>
@@ -104,7 +123,7 @@
 						<div class="row">
 							<div class="col-2"></div>
 							<div class="col-2">Date of death:</div>
-							<div class="col-4">
+							<div class="col-6">
 								<input type="text" name="death" class="form-control">
 							</div>
 						</div>
@@ -112,9 +131,9 @@
 					<br><br>
 					<div class="container">
 						<div class="row">
-							<div class="col-3"></div>
-							<div class="col-4">
-								<input type="submit" class="btn btn-outline-warning" value="Submit"> 
+							<div class="col-5"></div>
+							<div class="col-2">
+								<input type="submit" class="btn btn-outline-warning btn-block" value="Submit"> 
 							</div>
 						</div>
 					</div>
@@ -170,6 +189,7 @@
 								$db->close();
 								?>
 							</center>
+							<br><br><br><br><br><br><br>
 						</div>
 					</div>
 				</div>
