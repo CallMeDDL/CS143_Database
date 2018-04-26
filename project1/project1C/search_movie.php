@@ -92,6 +92,35 @@
 							<a class="nav-link  text-warning" href="movie_info.php">COCO</a>
 							<center>
 								<?php
+								
+								$db = new mysqli('localhost', 'cs143', '', 'CS143');
+								if($db->connect_errno > 0){
+								die('Unable to connect to database [' . $db->connect_error . ']');
+								}
+								$name = $_GET["name"];
+								//$movieName = explode(" ", $name);
+								if ($name != "") {
+									$query = ("SELECT id, year, title, rating
+											  FROM Movie 
+											  WHERE title = '$name' 
+											  order by title, year, id, rating;
+											  ");
+								}
+								else {
+									echo "Please put a movie name";
+								}
+								$rs = $db->query($query);
+
+								while($row = mysqli_fetch_row($rs)) {
+									$id = $row[0];
+									$year = $row[1];
+									$title = $row[2];
+									$rating = $row[3];
+									//echo "Movie ID: ".$id."<br>";
+									echo "Movie Name: ".$title."<br>";
+									echo "Movie Year: ".$year."<br>";
+									//echo "Movie Rating: ".$rating."<br>";
+								}
 								?>
 							</center>
 							<br><br><br><br><br><br><br>
