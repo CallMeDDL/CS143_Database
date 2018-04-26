@@ -10,7 +10,7 @@
 </head>
 <body>
 	<header class="blog-header py-3 bg-warning text-center">
-		<a class="blog-header-logo text-white">
+		<a class="blog-header-logo text-white" href="home.php">
 			<h1>Movie Databse Query Interface</h1>
 		</a>
 	</header>

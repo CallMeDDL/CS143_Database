@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-		<title>Add Movie Comment</title>
+		<title>Add Actor or Director</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- link to Bootstrap -->
@@ -57,69 +57,10 @@
 					<div class="row">
 						<div class="col-1"></div>
 						<div class="col-10">
-							<h2>Add Movie Comment</h2>
+							<center><h2>Welcome to Fake IMDb</h2></center>
 							<hr style="width: 100%; color: black; height: 1px;" />
-						</div>
-					</div>
-				</div>
-				<form action="comment.php" method="get">
-					<div class="container">
-						<div class="row">
-							<div class="col-2"></div>
-							<div class="col-2">Your Name:</div>
-							<div class="col-6">
-								<input type="text" name="name" class="form-control">
-							</div>
-						</div>
-					</div>
-					<br>
-					<div class="container">
-						<div class="row">
-							<div class="col-2"></div>
-							<div class="col-2">Rating:</div>
-							<div class="col-6">
-								<select name="rating" class="form-control"> 
-									<option value="1">1</option> 
-									<option value="2" selected>2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<br>
-					<div class="container">
-						<div class="row">
-							<div class="col-2"></div>
-							<div class="col-2">Your Comment:</div>
-							<div class="col-6">
-								<textarea rows="5" name="comment" class="form-control"></textarea>
-							</div>
-						</div>
-					</div>
-					<br><br>
-					<div class="container">
-						<div class="row">
-							<div class="col-5"></div>
-							<div class="col-2">
-								<input type="submit" class="btn btn-outline-warning btn-block" value="Submit"> 
-							</div>
-						</div>
-					</div>
-				</form>
-				<div class="container">
-					<div class="row">
-						<div class="col-1"></div>
-						<div class="col-10">
 							<br>
-							<h2>Result</h2>
-							<hr style="width: 100%; color: black; height: 1px;" />
-							<center>
-								<?php
-								?>
-							</center>
-							<br><br><br><br><br><br><br>
+							<img src="logo.svg" class="img-fluid" alt="Responsive image">
 						</div>
 					</div>
 				</div>

@@ -10,7 +10,7 @@
 </head>
 <body>
 	<header class="blog-header py-3 bg-warning text-center">
-		<a class="blog-header-logo text-white">
+		<a class="blog-header-logo text-white" href="home.php">
 			<h1>Movie Databse Query Interface</h1>
 		</a>
 	</header>
@@ -104,11 +104,15 @@
 					<div class="row">
 						<div class="col-2"></div>
 						<div class="col-2">
-							<input type="submit" class="btn btn-outline-warning btn-block" value="Add Actor"> 
+							<form action="movie_actor.php" method="get">
+								<input type="submit" class="btn btn-outline-warning btn-block" value="Add Actor"> 
+							</form>
 						</div>
 						<div class="col-1"></div>
 						<div class="col-2">
-							<input type="submit" class="btn btn-outline-warning btn-block" value="Add Director"> 
+							<form action="movie_director.php" method="get">
+								<input type="submit" class="btn btn-outline-warning btn-block" value="Add Director"> 
+							</form>
 						</div>
 					</div>
 				</div>
@@ -136,7 +140,9 @@
 					<div class="row">
 						<div class="col-2"></div>
 						<div class="col-2">
-							<input type="submit" class="btn btn-outline-warning btn-block" value="Add Comment"> 
+							<form action="comment.php" method="get">
+								<input type="submit" class="btn btn-outline-warning btn-block" value="Add Comment">
+							</form> 
 						</div>
 					</div>
 				</div>
