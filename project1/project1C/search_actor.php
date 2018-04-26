@@ -92,6 +92,39 @@
 							<center>
 								<a class="nav-link  text-warning" href="actor_info.php">Handsome Tianyi</a>
 								<?php
+								
+								$db = new mysqli('localhost', 'cs143', '', 'CS143');
+								if($db->connect_errno > 0){
+								die('Unable to connect to database [' . $db->connect_error . ']');
+								}
+								$name = $_GET["name"];
+								if ($name != "") {
+									$query = ("SELECT id, dob, first, last, dod
+										   FROM Actor 
+										   WHERE concat(first, ' ', last) REGEXP '$name'
+										   ORDER BY last, first, dob, id;
+									          ");
+								}
+								else {
+									$query = ("SELECT id, dob, first, last, dod
+									           FROM Actor 
+									           ORDER BY last, first, dob, id;
+									          ");
+								
+								}
+								$rs = $db->query($query);
+
+								while($row = mysqli_fetch_row($rs)) {
+									$id = $row[0];
+									$dob = $row[1];
+									$first = $row[2];
+									$last = $row[3];
+									$dod = $row[4];
+									echo "Actor Name: ".$first." ";
+									echo $last."<br>";
+									echo "Actor Data of Birth: ".$dob."<br>";
+								}
+
 								?>
 							</center>
 							<br><br><br><br><br><br><br>
