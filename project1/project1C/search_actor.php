@@ -69,6 +69,7 @@
 							<div class="col-2">Actor name:</div>
 							<div class="col-6">
 								<input type="text" name="name" class="form-control">
+								<input type="hidden" name="sent" value="yes">
 							</div>
 						</div>
 					</div>
@@ -98,19 +99,21 @@
 								die('Unable to connect to database [' . $db->connect_error . ']');
 								}
 								$name = $_GET["name"];
-								if ($name != "") {
-									$query = ("SELECT id, dob, first, last, dod
-										   FROM Actor 
-										   WHERE concat(first, ' ', last) REGEXP '$name'
-										   ORDER BY last, first, dob, id;
-									          ");
-								}
-								else {
-									$query = ("SELECT id, dob, first, last, dod
-									           FROM Actor 
-									           ORDER BY last, first, dob, id;
-									          ");
-								
+								$sent = $_GET["sent"];
+								if ($sent == "yes"){
+									if ($name != "") {
+										$query = ("SELECT id, dob, first, last, dod
+											   FROM Actor 
+											   WHERE concat(first, ' ', last) REGEXP '$name'
+											   ORDER BY last, first, dob, id;
+											  ");
+									}
+									else {
+										$query = ("SELECT id, dob, first, last, dod
+											   FROM Actor 
+											   ORDER BY last, first, dob, id;
+											  ");
+									}
 								}
 								$rs = $db->query($query);
 
