@@ -150,42 +150,36 @@
 								// Establishing a Connection
 								$db = new mysqli('localhost', 'cs143', '', 'CS143');
 								if($db->connect_errno > 0){
-									die('Unable to connect to database [' . $db->connect_error . ']');
+								die('Unable to connect to database [' . $db->connect_error . ']');
 								}
-
-								// Issuing Queries
-								$query = $_GET["query"];
-								if (!is_null($query)){
-									if (!($rs = $db->query($query))){
-										$errmsg = $db->error;
-										print "Query failed: $errmsg <br />";
-										exit(1);
+							 	$type = $_GET["type"];
+							 	$fname = $_GET["fname"];
+							 	$lname = $_GET["lname"];
+							 	$sex = $_GET["sex"];
+							 	$birth = $_GET["birth"];
+							 	$death = $_GET["death"];
+							 	// Issuing Queries
+							 	$db->query("UPDATE MaxPersonID SET id = id + 1;");
+							 	$rs = $db->query("SELECT id FROM MaxPersonID;");
+							 	$row = mysqli_fetch_row($rs);
+							 	$id = $row[0];
+							 	if ($type == "actor") {
+							 		if ($death != "") {
+							 			$query = "INSERT INTO Actor VALUES($id, '$lname', '$fname', '$sex', '$birth', '$death');";
+							 		}
+							 		else {
+							 			$query = "INSERT INTO Actor VALUES($id, '$lname', '$fname', '$sex', '$birth', NULL);";
+							 		}
+							 	}
+								else {
+							 		if ($death != "") {
+							 			$query = "INSERT INTO Actor VALUES($id, '$lname', '$fname', '$birth', '$death');";
+							 		} 
+							 		else {
+										$query = "INSERT INTO Actor VALUES($id, '$lname', '$fname', '$birth', NULL);";
 									}
-
-									// Retrieving Results
-									if ($rs->field_count > 0) {
-										$field = array();
-										print '<table class="table table-bordered" ><thead class="thead-light"><tr>';
-										while ($finfo = $rs->fetch_field()) {
-											$field[] = $finfo->name;
-											print '<th scope="col">' . $finfo->name . '</th>';
-										}
-										print '</tr></thead><tbody>';
-										while($row = $rs->fetch_assoc()) {
-											print '<tr>';
-											for ($i = 0; $i < $rs->field_count; $i++) {
-												print '<td>' . $row[$field[$i]] . '</td>';
-											}
-											print '</tr>';
-										}
-										print '</tbody></table>';
-									}else {
-										print "No result";
-									}
-
-									// Free Result and Close Database
-									$rs->free();
-								}
+							 	}
+							 	$db->query($query);
 								$db->close();
 								?>
 							</center>
