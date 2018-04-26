@@ -69,6 +69,7 @@
 							<div class="col-2">Movie name:</div>
 							<div class="col-6">
 								<input type="text" name="name" class="form-control">
+								<input type="hidden" name="sent" value="yes">
 							</div>
 						</div>
 					</div>
@@ -98,19 +99,22 @@
 								die('Unable to connect to database [' . $db->connect_error . ']');
 								}
 								$name = $_GET["name"];
+								$sent = $_GET["sent"];
 								//$movieName = explode(" ", $name);
-								if ($name != "") {
-									$query = ("SELECT id, year, title, rating
-									           FROM Movie 
-										   WHERE title REGEXP '$name' 
-										   ORDER BY title, year, id, rating;
-											  ");
-								}
-								else {
-									$query = ("SELECT id, year, title, rating
-									 	   FROM Movie 
-										   ORDER BY title, year, id, rating;
-											  ");
+								if ($sent == "yes"){
+									if ($name != "") {
+										$query = ("SELECT id, year, title, rating
+										           FROM Movie 
+											   WHERE title REGEXP '$name' 
+											   ORDER BY title, year, id, rating;
+												  ");
+									}
+									else {
+										$query = ("SELECT id, year, title, rating
+										 	   FROM Movie 
+											   ORDER BY title, year, id, rating;
+												  ");
+									}
 								}
 								$rs = $db->query($query);
 
