@@ -173,10 +173,10 @@
 							 	}
 								else {
 							 		if ($death != "") {
-							 			$query = "INSERT INTO Actor VALUES($id, '$lname', '$fname', '$birth', '$death');";
+							 			$query = "INSERT INTO Director VALUES($id, '$lname', '$fname', '$birth', '$death');";
 							 		} 
 							 		else {
-										$query = "INSERT INTO Actor VALUES($id, '$lname', '$fname', '$birth', NULL);";
+										$query = "INSERT INTO Director VALUES($id, '$lname', '$fname', '$birth', NULL);";
 									}
 							 	}
 							 	$db->query($query);
