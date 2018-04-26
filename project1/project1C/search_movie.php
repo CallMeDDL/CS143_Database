@@ -101,13 +101,16 @@
 								//$movieName = explode(" ", $name);
 								if ($name != "") {
 									$query = ("SELECT id, year, title, rating
-											  FROM Movie 
-											  WHERE title = '$name' 
-											  order by title, year, id, rating;
+									           FROM Movie 
+										   WHERE title REGEXP '$name' 
+										   OEDER BY title, year, id, rating;
 											  ");
 								}
 								else {
-									echo "Please put a movie name";
+									$query = ("SELECT id, year, title, rating
+									 	   FROM Movie 
+										   OEDER BY title, year, id, rating;
+											  ");
 								}
 								$rs = $db->query($query);
 
@@ -121,6 +124,7 @@
 									echo "Movie Year: ".$year."<br>";
 									//echo "Movie Rating: ".$rating."<br>";
 								}
+								
 								?>
 							</center>
 							<br><br><br><br><br><br><br>
