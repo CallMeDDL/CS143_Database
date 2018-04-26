@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-		<title>Fake IMDb</title>
+		<title>Search Actor or Movie</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- link to Bootstrap -->
@@ -66,10 +66,44 @@
 					<div class="row">
 						<div class="col-1"></div>
 						<div class="col-10">
-							<center><h2>Welcome to Fake IMDb</h2></center>
+							<h2>Search an Actor or Movie</h2>
 							<hr style="width: 100%; color: black; height: 1px;" />
+						</div>
+					</div>
+				</div>
+				<form action="search_movie.php" method="get">
+					<div class="container">
+						<div class="row">
+							<div class="col-2"></div>
+							<div class="col-2">Name:</div>
+							<div class="col-6">
+								<input type="text" name="name" class="form-control">
+							</div>
+						</div>
+					</div>
+					<br><br>
+					<div class="container">
+						<div class="row">
+							<div class="col-5"></div>
+							<div class="col-2">
+								<input type="submit" class="btn btn-outline-warning btn-block" value="Search"> 
+							</div>
+						</div>
+					</div>
+				</form>
+				<div class="container">
+					<div class="row">
+						<div class="col-1"></div>
+						<div class="col-10">
 							<br>
-							<img src="logo.svg" class="img-fluid" alt="Responsive image">
+							<h2>Result</h2>
+							<hr style="width: 100%; color: black; height: 1px;" />
+							<a class="nav-link  text-warning" href="movie_info.php">COCO</a>
+							<center>
+								<?php
+								?>
+							</center>
+							<br><br><br><br><br><br><br>
 						</div>
 					</div>
 				</div>
