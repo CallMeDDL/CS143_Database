@@ -103,13 +103,13 @@
 									$query = ("SELECT id, year, title, rating
 									           FROM Movie 
 										   WHERE title REGEXP '$name' 
-										   OEDER BY title, year, id, rating;
+										   ORDER BY title, year, id, rating;
 											  ");
 								}
 								else {
 									$query = ("SELECT id, year, title, rating
 									 	   FROM Movie 
-										   OEDER BY title, year, id, rating;
+										   ORDER BY title, year, id, rating;
 											  ");
 								}
 								$rs = $db->query($query);
