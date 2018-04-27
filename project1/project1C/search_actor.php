@@ -120,27 +120,28 @@
 											   ORDER BY last, first, dob, id;
 											  ");
 									}
+								
+									$rs = $db->query($query);
+									print '<table class="table table-bordered">
+										<thead class="thead-light">
+										<tr>
+										<th scope="col">Actor Name</th>
+										<th scope="col">Birth</th>
+										</tr>
+										</thead>
+										<tbody>';
+									while($row = mysqli_fetch_row($rs)) {
+										$id = $row[0];
+										$dob = $row[1];
+										$first = $row[2];
+										$last = $row[3];
+										$dod = $row[4];
+										print '<tr><th scope="row"><a class="nav-link  text-warning" href="actor_info.php?id=' .$id. '">' .$first. ' ' .$last. '</a></th>';
+										print '<td>' . $dod . '</td></tr>';
+									}
+									print '</tbody>
+										</table>';
 								}
-								$rs = $db->query($query);
-								print '<table class="table table-bordered">
-									<thead class="thead-light">
-									<tr>
-									<th scope="col">Actor Name</th>
-									<th scope="col">Birth</th>
-									</tr>
-									</thead>
-									<tbody>';
-								while($row = mysqli_fetch_row($rs)) {
-									$id = $row[0];
-									$dob = $row[1];
-									$first = $row[2];
-									$last = $row[3];
-									$dod = $row[4];
-									print '<tr><th scope="row"><a class="nav-link  text-warning" href="actor_info.php?id=' .$id. '">' .$first. ' ' .$last. '</a></th>';
-									print '<td>' . $dod . '</td></tr>';
-								}
-								print '</tbody>
-									</table>';
 
 								?>
 							</center>
