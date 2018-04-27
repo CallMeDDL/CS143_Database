@@ -203,7 +203,7 @@
 								 	$row = mysqli_fetch_row($rs);
 								 	$id = $row[0];
 								 	$query = ("INSERT INTO Movie VALUES($id, '$title', $year, '$rating', '$company');");
-								 	$query = ("INSERT INTO Actor VALUES($id, '$lname', '$fname', '$sex', '$birth', NULL);");
+								 	echo $query;
 								 	if (!($rs1 = $db->query($query))){
 										$errmsg = $db->error;
 										print "<h5>Query failed: $errmsg</h5> <br />";
