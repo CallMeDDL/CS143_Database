@@ -195,54 +195,41 @@
 							 	$rating = $_GET["rating"];
 							 	$company = $_GET["company"];
 							 	$movieGenre = $_GET["genre"];
-							 	$sent = $_GET["sent"];
 							 	
 							 	// Issuing Queries
-							 	$db->query("UPDATE MaxMovieID SET id = id + 1;");
-							 	$rs = $db->query("SELECT id FROM MaxMovieID;");
-							 	$row = mysqli_fetch_row($rs);
-							 	$id = $row[0];
-							 	$rs1 = $db->query("INSERT INTO Movie VALUES($id, '$title', $year, '$rating', '$company');");
-
-								 	$rs1 = $db->query("SELECT id, title, year, rating, compaany  
-								 					   FROM Movie
-								 					   WHERE id = $id;
-								 					 ");
-
-								 	while($row = mysqli_fetch_row($rs1)) {
-									$id = $row[0];
-									$title = $row[1];
-									$year = $row[2];
-									$rating = $row[3];
-									$company = $row[4];
+							 	if (isset($_GET["title"]) && isset($_GET["year"]) && isset($_GET["rating"])){
+								 	$db->query("UPDATE MaxMovieID SET id = id + 1;");
+								 	$rs = $db->query("SELECT id FROM MaxMovieID;");
+								 	$row = mysqli_fetch_row($rs);
+								 	$id = $row[0];
+								 	$query = ("INSERT INTO Movie VALUES($id, '$title', $year, '$rating', '$company');");
+								 	$query = ("INSERT INTO Actor VALUES($id, '$lname', '$fname', '$sex', '$birth', NULL);");
+								 	if (!($rs1 = $db->query($query))){
+										$errmsg = $db->error;
+										print "<h5>Query failed: $errmsg</h5> <br />";
+										exit(1);
 									}
-									echo "Title: ".$title."<br>";
-									echo "Year: ".$year."<br>";
-									echo "Rating: ".$rating."<br>";
-									echo "Company: ".$company."<br>";
-								
-							 	$genreNum = 0;
-							 	if (empty($movieGenre)) {
-							 		echo "No Movie Genre set !";
-							 	}
-							 	else {
-							 		$genreNum = count($movieGenre);
-							 	}
-								for ($i = 0; $i < $genreNum; $i++) {
-									$genre = $movieGenre[i];
-									$dbc->query("INSERT INTO MovieGenre VALUES($id, '$genre');");
-
-									$rs2 = $db->query("SELECT genre 
-								 					   FROM MovieGenre
-								 					   WHERE mid = $id;
-								 					 ");
-
-								 	while($row = mysqli_fetch_row($rs2)) {
-									$genre = $row[0];
-									echo "Genre: ".$genre."<br>";
+									else {
+										print '<h5>Succesfully Add New Movie into our database!</h5><br>';
+										echo "Title: ".$title."<br>";
+										echo "Year: ".$year."<br>";
+										echo "Rating: ".$rating."<br>";
+										echo "Company: ".$company."<br>";
+										echo "Genre: ";
 									}
-								}
-								
+								 	$genreNum = 0;
+								 	if (empty($movieGenre)) {
+								 		echo "No Movie Genre set !";
+								 	}
+								 	else {
+								 		$genreNum = count($movieGenre);
+								 	}
+									for ($i = 0; $i < $genreNum; $i++) {
+										$genre = $movieGenre[i];
+										$dbc->query("INSERT INTO MovieGenre VALUES($id, '$genre');");
+										echo $genre. " ";
+									}
+								}	
 								?>
 							</center>
 							<br><br><br><br><br><br><br>

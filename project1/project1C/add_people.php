@@ -154,74 +154,68 @@
 							<br>
 							<h2>Result</h2>
 							<hr style="width: 100%; color: black; height: 1px;" />
-							<center>
-								<?php
-								// Establishing a Connection
-								$db = new mysqli('localhost', 'cs143', '', 'CS143');
-								if($db->connect_errno > 0){
-								die('Unable to connect to database [' . $db->connect_error . ']');
-								}
-							 	$type = $_GET["type"];
-							 	$fname = $_GET["fname"];
-							 	$lname = $_GET["lname"];
-							 	$sex = $_GET["sex"];
-							 	$birth = $_GET["birth"];
-							 	$death = $_GET["death"];
-							 	$sent = $_GET["sent"];
-							 	// Issuing Queries
-							 	
-								 	$db->query("UPDATE MaxPersonID SET id = id + 1;");
-								 	$rs = $db->query("SELECT id FROM MaxPersonID;");
-								 	$row = mysqli_fetch_row($rs);
-								 	$id = $row[0];
-								 	if ($type == "actor") {
-								 		if ($death != "") {
-								 			$query = ("INSERT INTO Actor VALUES($id, '$lname', '$fname', '$sex', '$birth', '$death');");
-								 		}
-								 		else {
-								 			$query = ("INSERT INTO Actor VALUES($id, '$lname', '$fname', '$sex', '$birth', NULL);");
-								 		}
-								 	}
-									else {
-								 		if ($death != "") {
-								 			$query = ("INSERT INTO Actor VALUES($id, '$lname', '$fname', '$birth', '$death');");
-								 		} 
-								 		else {
-											$query = ("INSERT INTO Actor VALUES($id, '$lname', '$fname', '$birth', NULL);");
-										}
-								 	}
-								 	$db->query($query);
-								 	$rs1 = $db->query("SELECT id, last, first, sex, dob,dod  
-								 					   FROM Actor
-								 					   WHERE id = $id;
-								 					 ");
-
-								 	while($row = mysqli_fetch_row($rs1)) {
-									$id = $row[0];
-									$last = $row[1];
-									$first = $row[2];
-									$sex = $row[3];
-									$dob = $row[4];
-									$dod = $row[5];
-									}
-									echo "Typr: ".$type."<br>";
-									echo "ID: ".$id."<br>";
-									echo "Name: ".$first." ".$last."<br>";
-									echo "Sex: ".$sex."<br>";
-									echo "Dob: ".$dob."<br>";
-									if (!is_null($dod)) {
-										echo "Dod: ".$dod."<br>";
-										}
-									else {
-										echo "Dod: NULL";
-									}
-									$db->close();
-								?>
-							</center>
-							<br><br><br><br><br><br><br>
 						</div>
 					</div>
 				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-2"></div>
+						<div class="col-10">
+							<?php
+							// Establishing a Connection
+							$db = new mysqli('localhost', 'cs143', '', 'CS143');
+							if($db->connect_errno > 0){
+							die('Unable to connect to database [' . $db->connect_error . ']');
+							}
+						 	$type = $_GET["type"];
+						 	$fname = $_GET["fname"];
+						 	$lname = $_GET["lname"];
+						 	$sex = $_GET["sex"];
+						 	$birth = $_GET["birth"];
+						 	$death = $_GET["death"];
+						 	// Issuing Queries
+						 	if (isset($_GET["fname"]) && isset($_GET["lname"]) && isset($_GET["type"])){
+							 	$db->query("UPDATE MaxPersonID SET id = id + 1;");
+							 	$rs = $db->query("SELECT id FROM MaxPersonID;");
+							 	$row = mysqli_fetch_row($rs);
+							 	$id = $row[0];
+							 	if ($type == "actor") {
+							 		if ($death != "") {
+							 			$query = ("INSERT INTO Actor VALUES($id, '$lname', '$fname', '$sex', '$birth', '$death');");
+							 		}
+							 		else {
+							 			$query = ("INSERT INTO Actor VALUES($id, '$lname', '$fname', '$sex', '$birth', NULL);");
+							 		}
+							 	}
+								else {
+							 		if ($death != "") {
+							 			$query = ("INSERT INTO Director VALUES($id, '$lname', '$fname', '$birth', '$death');");
+							 		} 
+							 		else {
+										$query = ("INSERT INTO Director VALUES($id, '$lname', '$fname', '$birth', NULL);");
+									}
+							 	}
+							 	if (!($rs = $db->query($query))){
+									$errmsg = $db->error;
+									print "<h5>Query failed: $errmsg</h5> <br />";
+									exit(1);
+								}
+								else {
+									print '<h5>Succesfully Add New People into our database!</h5><br>';
+									echo "Type: ".$type."<br>";
+									echo "First Name: ".$fname."<br>";
+									echo "Last Name: ".$lname."<br>";
+									echo "Sex: ".$sex."<br>";
+									echo "Birth: ".$birth."<br>";
+									echo "Death: ".$death."<br>";
+								}
+							}
+							$db->close();
+							?>
+						</div>
+					</div>
+				</div>
+				<br><br><br><br><br><br><br>
 			</div>
 		</div>
 	</div>
