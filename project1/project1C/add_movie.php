@@ -185,6 +185,7 @@
 							<hr style="width: 100%; color: black; height: 1px;" />
 							<center>
 								<?php
+								
 								$db = new mysqli('localhost', 'cs143', '', 'CS143');
 								if($db->connect_errno > 0){
 								die('Unable to connect to database [' . $db->connect_error . ']');
@@ -195,18 +196,31 @@
 							 	$company = $_GET["company"];
 							 	$movieGenre = $_GET["genre"];
 							 	$sent = $_GET["sent"];
-							 	if ($sent == "yes"){
+							 	
 							 	// Issuing Queries
 							 	$db->query("UPDATE MaxMovieID SET id = id + 1;");
 							 	$rs = $db->query("SELECT id FROM MaxMovieID;");
 							 	$row = mysqli_fetch_row($rs);
 							 	$id = $row[0];
 							 	$rs1 = $db->query("INSERT INTO Movie VALUES($id, '$title', $year, '$rating', '$company');");
-								if (!is_null($rs1)) {
-									echo "Add Success!"."<br>";
-								}
 
-							 	
+								 	$rs1 = $db->query("SELECT id, title, year, rating, compaany  
+								 					   FROM Movie
+								 					   WHERE id = $id;
+								 					 ");
+
+								 	while($row = mysqli_fetch_row($rs1)) {
+									$id = $row[0];
+									$title = $row[1];
+									$year = $row[2];
+									$rating = $row[3];
+									$company = $row[4];
+									}
+									echo "Title: ".$title."<br>";
+									echo "Year: ".$year."<br>";
+									echo "Rating: ".$rating."<br>";
+									echo "Company: ".$company."<br>";
+								
 							 	$genreNum = 0;
 							 	if (empty($movieGenre)) {
 							 		echo "No Movie Genre set !";
@@ -217,9 +231,17 @@
 								for ($i = 0; $i < $genreNum; $i++) {
 									$genre = $movieGenre[i];
 									$dbc->query("INSERT INTO MovieGenre VALUES($id, '$genre');");
+
+									$rs2 = $db->query("SELECT genre 
+								 					   FROM MovieGenre
+								 					   WHERE mid = $id;
+								 					 ");
+
+								 	while($row = mysqli_fetch_row($rs2)) {
+									$genre = $row[0];
+									echo "Genre: ".$genre."<br>";
+									}
 								}
-								}
-							 	$db->close();
 								
 								?>
 							</center>
