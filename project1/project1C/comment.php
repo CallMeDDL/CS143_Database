@@ -126,6 +126,31 @@
 							<hr style="width: 100%; color: black; height: 1px;" />
 							<center>
 								<?php
+									$db = new mysqli('localhost', 'cs143', '', 'CS143');
+									if($db->connect_errno > 0){
+									die('Unable to connect to database [' . $db->connect_error . ']');
+									}
+
+									$mid = 3563;
+									$name = $_GET["name"];
+									$rating = $_GET["rating"];
+									$comment = $_GET["comment"];
+									$comment = $db->real_escape_string($comment);
+
+									$db->query("INSERT INTO Review VALUES('$name', now(), $mid, $rating, '$comment');");
+
+								 	$rs = $db->query(" SELECT name, rating, comment
+								 					   FROM Review
+								 					   WHERE Review.mid = $mid;
+								 					 ");
+								 	while($row = mysqli_fetch_row($rs)) {
+									$name = $row[0];
+									$rating = $row[1];
+									//$comment = $row[2];
+									echo "Name: ".$name."<br>";
+									echo "Rating: ".$rating."<br>";
+									echo "Comment: ".$comment."<br>";
+									}
 								?>
 							</center>
 							<br><br><br><br><br><br><br>
