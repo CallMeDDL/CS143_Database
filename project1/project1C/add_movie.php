@@ -69,6 +69,7 @@
 							<div class="col-2">Movie title</div>
 							<div class="col-6">
 								<input type="text" name="title" class="form-control">
+								<input type="hidden" name="sent" value="yes">
 							</div>
 						</div>
 					</div>
@@ -175,6 +176,42 @@
 							<hr style="width: 100%; color: black; height: 1px;" />
 							<center>
 								<?php
+								$db = new mysqli('localhost', 'cs143', '', 'CS143');
+								if($db->connect_errno > 0){
+								die('Unable to connect to database [' . $db->connect_error . ']');
+								}
+							 	$title = $_GET["title"];
+							 	$year = $_GET["year"];
+							 	$rating = $_GET["rating"];
+							 	$company = $_GET["company"];
+							 	$movieGenre = $_GET["genre"];
+							 	$sent = $_GET["sent"];
+							 	if ($sent == "yes"){
+							 	// Issuing Queries
+							 	$db->query("UPDATE MaxMovieID SET id = id + 1;");
+							 	$rs = $db->query("SELECT id FROM MaxMovieID;");
+							 	$row = mysqli_fetch_row($rs);
+							 	$id = $row[0];
+							 	$rs1 = $db->query("INSERT INTO Movie VALUES($id, '$title', $year, '$rating', '$company');");
+								if (!is_null($rs1)) {
+									echo "Add Success!"."<br>";
+								}
+
+							 	
+							 	$genreNum = 0;
+							 	if (empty($movieGenre)) {
+							 		echo "No Movie Genre set !";
+							 	}
+							 	else {
+							 		$genreNum = count($movieGenre);
+							 	}
+								for ($i = 0; $i < $genreNum; $i++) {
+									$genre = $movieGenre[i];
+									$dbc->query("INSERT INTO MovieGenre VALUES($id, '$genre');");
+								}
+								}
+							 	$db->close();
+								
 								?>
 							</center>
 							<br><br><br><br><br><br><br>
