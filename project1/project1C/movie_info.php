@@ -186,7 +186,7 @@
 				<br>
 				<div class="container">
 					<div class="row">
-						<div class="col-2"></div>
+						<div class="col-3"></div>
 						<div class="col-2">
 							<form action="movie_actor.php" method="get">
 								<input type="submit" class="btn btn-outline-warning btn-block" value="Add Actor"> 
@@ -251,7 +251,7 @@
 				<br>
 				<div class="container">
 					<div class="row">
-						<div class="col-2"></div>
+						<div class="col-3"></div>
 						<div class="col-2">
 							<form action="comment.php" method="get">
 								<input type="submit" class="btn btn-outline-warning btn-block" value="Add Comment">

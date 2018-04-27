@@ -90,7 +90,7 @@
 								die('Unable to connect to database [' . $db->connect_error . ']');
 								}
 
-								$id = 505;//$_GET[""];
+								$id = $_GET["id"];
 								//$title = $_GET[""];
 								//$year = $_GET[""];
 								$query1 = ("SELECT first, last, sex, dob, dod
@@ -131,7 +131,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-2"></div>
-						<div class="col-10">
+						<div class="col-8">
 							<?php
 							
 								// still has a bug
@@ -140,23 +140,37 @@
 								die('Unable to connect to database [' . $db->connect_error . ']');
 								}
 								
-								$id = 2568;// actor ID
-								//$title = $_GET[""];
+								$id = $_GET["id"];
 								//$year = $_GET[""];
-								$query2 = ("SELECT title, role 
+								$query2 = ("SELECT id, title, role 
 										    FROM Movie 
 										    INNER JOIN MovieActor ON Movie.id = MovieActor.mid
 										    WHERE MovieActor.aid = $id
 										    ORDER BY role, title;
 										   ");
-							
-								$rs2 = $db->query($query2);
-						
-								while($row = mysqli_fetch_row($rs2)) {
-									$title = $row[0];
-									$role = $row[1];
-									echo "Role: ".$role."<br>";
-									echo "title: ".$title."<br>";
+								if (!($rs2 = $db->query($query2))) {
+									$errmsg = $db->error;
+									print "<h5>Query failed: $errmsg</h5> <br />";
+									exit(1);
+								}
+								else {
+									print '<table class="table table-bordered">
+									<thead class="thead-light">
+									<tr>
+									<th scope="col">Movie Name</th>
+									<th scope="col">Role</th>
+									</tr>
+									</thead>
+									<tbody>';
+									while($row = mysqli_fetch_row($rs2)) {
+										$id = $row[0];
+										$title = $row[1];
+										$role = $row[2];
+										print '<tr><th scope="row"><a class="nav-link  text-warning" href="movie_info.php?id=' .$id. '">' .$title . '</a></th>';
+										print '<td>' . $role . '</td></tr>';
+									}
+									print '</tbody>
+									</table>';
 								}
 							?>
 						</div>

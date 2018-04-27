@@ -78,7 +78,6 @@
 							<div class="col-2">Actor name:</div>
 							<div class="col-6">
 								<input type="text" name="name" class="form-control">
-								<input type="hidden" name="sent" value="yes">
 							</div>
 						</div>
 					</div>
@@ -100,7 +99,6 @@
 							<h2>Result</h2>
 							<hr style="width: 100%; color: black; height: 1px;" />
 							<center>
-								<a class="nav-link  text-warning" href="actor_info.php">Handsome Tianyi</a>
 								<?php
 								
 								$db = new mysqli('localhost', 'cs143', '', 'CS143');
@@ -108,34 +106,41 @@
 								die('Unable to connect to database [' . $db->connect_error . ']');
 								}
 								$name = $_GET["name"];
-								$sent = $_GET["sent"];
-								if ($sent == "yes"){
+								if (isset($_GET["name"])){
 									if ($name != "") {
-										$query = ("SELECT id, dob, first, last, dod
+										$query = ("SELECT id, dob, first, last, dob
 											   FROM Actor 
 											   WHERE concat(first, ' ', last) REGEXP '$name'
 											   ORDER BY last, first, dob, id;
 											  ");
 									}
 									else {
-										$query = ("SELECT id, dob, first, last, dod
+										$query = ("SELECT id, dob, first, last, dob
 											   FROM Actor 
 											   ORDER BY last, first, dob, id;
 											  ");
 									}
 								}
 								$rs = $db->query($query);
-
+								print '<table class="table table-bordered">
+									<thead class="thead-light">
+									<tr>
+									<th scope="col">Actor Name</th>
+									<th scope="col">Birth</th>
+									</tr>
+									</thead>
+									<tbody>';
 								while($row = mysqli_fetch_row($rs)) {
 									$id = $row[0];
 									$dob = $row[1];
 									$first = $row[2];
 									$last = $row[3];
 									$dod = $row[4];
-									echo "Actor Name: ".$first." ";
-									echo $last."<br>";
-									echo "Actor Data of Birth: ".$dob."<br>";
+									print '<tr><th scope="row"><a class="nav-link  text-warning" href="actor_info.php?id=' .$id. '">' .$first. ' ' .$last. '</a></th>';
+									print '<td>' . $dod . '</td></tr>';
 								}
+								print '</tbody>
+									</table>';
 
 								?>
 							</center>
