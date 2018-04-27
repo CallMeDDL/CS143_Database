@@ -167,29 +167,55 @@
 							 	$sex = $_GET["sex"];
 							 	$birth = $_GET["birth"];
 							 	$death = $_GET["death"];
+							 	$sent = $_GET["sent"];
 							 	// Issuing Queries
-							 	$db->query("UPDATE MaxPersonID SET id = id + 1;");
-							 	$rs = $db->query("SELECT id FROM MaxPersonID;");
-							 	$row = mysqli_fetch_row($rs);
-							 	$id = $row[0];
-							 	if ($type == "actor") {
-							 		if ($death != "") {
-							 			$query = "INSERT INTO Actor VALUES($id, '$lname', '$fname', '$sex', '$birth', '$death');";
-							 		}
-							 		else {
-							 			$query = "INSERT INTO Actor VALUES($id, '$lname', '$fname', '$sex', '$birth', NULL);";
-							 		}
-							 	}
-								else {
-							 		if ($death != "") {
-							 			$query = "INSERT INTO Director VALUES($id, '$lname', '$fname', '$birth', '$death');";
-							 		} 
-							 		else {
-										$query = "INSERT INTO Director VALUES($id, '$lname', '$fname', '$birth', NULL);";
+							 	
+								 	$db->query("UPDATE MaxPersonID SET id = id + 1;");
+								 	$rs = $db->query("SELECT id FROM MaxPersonID;");
+								 	$row = mysqli_fetch_row($rs);
+								 	$id = $row[0];
+								 	if ($type == "actor") {
+								 		if ($death != "") {
+								 			$query = ("INSERT INTO Actor VALUES($id, '$lname', '$fname', '$sex', '$birth', '$death');");
+								 		}
+								 		else {
+								 			$query = ("INSERT INTO Actor VALUES($id, '$lname', '$fname', '$sex', '$birth', NULL);");
+								 		}
+								 	}
+									else {
+								 		if ($death != "") {
+								 			$query = ("INSERT INTO Actor VALUES($id, '$lname', '$fname', '$birth', '$death');");
+								 		} 
+								 		else {
+											$query = ("INSERT INTO Actor VALUES($id, '$lname', '$fname', '$birth', NULL);");
+										}
+								 	}
+								 	$db->query($query);
+								 	$rs1 = $db->query("SELECT id, last, first, sex, dob,dod  
+								 					   FROM Actor
+								 					   WHERE id = $id;
+								 					 ");
+
+								 	while($row = mysqli_fetch_row($rs1)) {
+									$id = $row[0];
+									$last = $row[1];
+									$first = $row[2];
+									$sex = $row[3];
+									$dob = $row[4];
+									$dod = $row[5];
 									}
-							 	}
-							 	$db->query($query);
-								$db->close();
+									echo "Typr: ".$type."<br>";
+									echo "ID: ".$id."<br>";
+									echo "Name: ".$first." ".$last."<br>";
+									echo "Sex: ".$sex."<br>";
+									echo "Dob: ".$dob."<br>";
+									if (!is_null($dod)) {
+										echo "Dod: ".$dod."<br>";
+										}
+									else {
+										echo "Dod: NULL";
+									}
+									$db->close();
 								?>
 							</center>
 							<br><br><br><br><br><br><br>
