@@ -189,13 +189,20 @@
 						<div class="col-3"></div>
 						<div class="col-2">
 							<form action="movie_actor.php" method="get">
-								<input type="submit" class="btn btn-outline-warning btn-block" value="Add Actor"> 
+								<input type="submit" class="btn btn-outline-warning btn-block" value="Add Actor"><?php
+								$id = $_GET["id"];
+								print '<input type="hidden" name="mid" value="' .$id. '">';
+								?>
 							</form>
 						</div>
 						<div class="col-1"></div>
 						<div class="col-2">
 							<form action="movie_director.php" method="get">
-								<input type="submit" class="btn btn-outline-warning btn-block" value="Add Director"> 
+								<input type="submit" class="btn btn-outline-warning btn-block" value="Add Director">
+								<?php
+								$id = $_GET["id"];
+								print '<input type="hidden" name="mid" value="' .$id. '">';
+								?>
 							</form>
 						</div>
 					</div>

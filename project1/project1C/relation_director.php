@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-		<title>Add Actor and Movie Relation</title>
+		<title>Add Director and Movie Relation</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- link to Bootstrap -->
@@ -66,18 +66,59 @@
 					<div class="row">
 						<div class="col-1"></div>
 						<div class="col-10">
-							<h2>Add Actor and Movie Relation</h2>
+							<h2>Add Director and Movie Relation</h2>
 							<hr style="width: 100%; color: black; height: 1px;" />
 						</div>
 					</div>
 				</div>
-				<form action="movie_actor.php" method="get">
+				<form action="relation_director.php" method="get">
 					<div class="container">
 						<div class="row">
 							<div class="col-2"></div>
-							<div class="col-2">Actor name:</div>
+							<div class="col-2">Movie name:</div>
 							<div class="col-6">
-								<input type="text" name="name" class="form-control">
+								<?php
+								$mid = $_GET["mid"];
+								$db = new mysqli('localhost', 'cs143', '', 'CS143');
+								if($db->connect_errno > 0){
+								die('Unable to connect to database [' . $db->connect_error . ']');
+								}
+								$query1 = ("SELECT title
+										    FROM Movie
+										    WHERE Movie.id = $mid
+										   ");
+								$rs1 = $db->query($query1);
+								while($row = mysqli_fetch_row($rs1)) {
+									$title = $row[0];
+								}
+								echo $title;	
+								?> 
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="container">
+						<div class="row">
+							<div class="col-2"></div>
+							<div class="col-2">Dctor name:</div>
+							<div class="col-6">
+								<?php
+								$did = $_GET["did"];
+								$db = new mysqli('localhost', 'cs143', '', 'CS143');
+								if($db->connect_errno > 0){
+								die('Unable to connect to database [' . $db->connect_error . ']');
+								}
+								$query1 = ("SELECT first, last
+										    FROM Director 
+										    WHERE Director.id = $did
+										   ");
+								$rs1 = $db->query($query1);
+								while($row = mysqli_fetch_row($rs1)) {
+									$first = $row[0];
+									$last = $row[1];
+								}
+								echo $first. " " .$last;	
+								?> 
 							</div>
 						</div>
 					</div>
@@ -86,10 +127,12 @@
 						<div class="row">
 							<div class="col-5"></div>
 							<div class="col-2">
-								<input type="submit" class="btn btn-outline-warning btn-block" value="Search">
+								<input type="submit" class="btn btn-outline-warning btn-block" value="Add" name="Add">
 								<?php
 								$mid = $_GET["mid"];
+								$did = $_GET["did"];
 								print '<input type="hidden" name="mid" value="' .$mid. '">';
+								print '<input type="hidden" name="did" value="' .$did. '">';
 								?> 
 							</div>
 						</div>
@@ -109,43 +152,12 @@
 								if($db->connect_errno > 0){
 								die('Unable to connect to database [' . $db->connect_error . ']');
 								}
-								$name = $_GET["name"];
-								if (isset($_GET["name"])){
-									if ($name != "") {
-										$query = ("SELECT id, dob, first, last, dob
-											   FROM Actor 
-											   WHERE concat(first, ' ', last) REGEXP '$name'
-											   ORDER BY last, first, dob, id;
-											  ");
-									}
-									else {
-										$query = ("SELECT id, dob, first, last, dob
-											   FROM Actor 
-											   ORDER BY last, first, dob, id;
-											  ");
-									}
-								
-									$rs = $db->query($query);
-									print '<table class="table table-bordered">
-										<thead class="thead-light">
-										<tr>
-										<th scope="col">Actor Name</th>
-										<th scope="col">Birth</th>
-										</tr>
-										</thead>
-										<tbody>';
-									$mid = $_GET["mid"];
-									while($row = mysqli_fetch_row($rs)) {
-										$id = $row[0];
-										$dob = $row[1];
-										$first = $row[2];
-										$last = $row[3];
-										$dod = $row[4];
-										print '<tr><th scope="row"><a class="nav-link  text-warning" href="relation_actor.php?aid=' .$id. '&mid=' .$mid. '">' .$first. ' ' .$last. '</a></th>';
-										print '<td>' . $dod . '</td></tr>';
-									}
-									print '</tbody>
-										</table>';
+								$mid = $_GET["mid"];
+								$did = $_GET["did"];
+								$Add = $_GET["Add"];
+								if ($Add == 'Add'){
+									// insert relation here
+									
 								}
 								?>
 							</center>

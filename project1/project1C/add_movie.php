@@ -43,7 +43,7 @@
 					<ul class="nav flex-column">
 						<h5>Browsing Option</h5>
 						<li class="nav-item">
-							<a class="nav-link  text-warning" href="ssearch_actor.php">Show Actor Information</a>
+							<a class="nav-link  text-warning" href="search_actor.php">Show Actor Information</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link  text-warning" href="search_movie.php">Show Movie Information</a>

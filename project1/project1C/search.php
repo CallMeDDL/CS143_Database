@@ -71,7 +71,7 @@
 						</div>
 					</div>
 				</div>
-				<form action="search_movie.php" method="get">
+				<form action="search.php" method="get">
 					<div class="container">
 						<div class="row">
 							<div class="col-2"></div>
@@ -98,9 +98,93 @@
 							<br>
 							<h2>Result</h2>
 							<hr style="width: 100%; color: black; height: 1px;" />
-							<a class="nav-link  text-warning" href="movie_info.php">COCO</a>
 							<center>
-								<?php
+								<?php						
+								$db = new mysqli('localhost', 'cs143', '', 'CS143');
+								if($db->connect_errno > 0){
+								die('Unable to connect to database [' . $db->connect_error . ']');
+								}
+								$name = $_GET["name"];
+								if (isset($_GET["name"])){
+									if ($name != "") {
+										$query = ("SELECT id, dob, first, last, dob
+											   FROM Actor 
+											   WHERE concat(first, ' ', last) REGEXP '$name'
+											   ORDER BY last, first, dob, id;
+											  ");
+									}
+									else {
+										$query = ("SELECT id, dob, first, last, dob
+											   FROM Actor 
+											   ORDER BY last, first, dob, id;
+											  ");
+									}
+								
+									$rs = $db->query($query);
+									print '<table class="table table-bordered">
+										<thead class="thead-light">
+										<tr>
+										<th scope="col">Actor Name</th>
+										<th scope="col">Birth</th>
+										</tr>
+										</thead>
+										<tbody>';
+									while($row = mysqli_fetch_row($rs)) {
+										$id = $row[0];
+										$dob = $row[1];
+										$first = $row[2];
+										$last = $row[3];
+										$dod = $row[4];
+										print '<tr><th scope="row"><a class="nav-link  text-warning" href="actor_info.php?id=' .$id. '">' .$first. ' ' .$last. '</a></th>';
+										print '<td>' . $dod . '</td></tr>';
+									}
+									print '</tbody>
+										</table>';
+								}
+								?>
+								<br><br>
+								
+								<?php						
+								$db = new mysqli('localhost', 'cs143', '', 'CS143');
+								if($db->connect_errno > 0){
+								die('Unable to connect to database [' . $db->connect_error . ']');
+								}
+								$name = $_GET["name"];
+								if (isset($_GET["name"])){
+									if ($name != "") {
+										$query = ("SELECT id, year, title, rating
+										           FROM Movie 
+											   WHERE title REGEXP '$name' 
+											   ORDER BY title, year, id, rating;
+												  ");
+									}
+									else {
+										$query = ("SELECT id, year, title, rating
+										 	   FROM Movie 
+											   ORDER BY title, year, id, rating;
+												  ");
+									}
+									$rs = $db->query($query);
+									print '<table class="table table-bordered">
+									<thead class="thead-light">
+									<tr>
+									<th scope="col">Movie Name</th>
+									<th scope="col">Year</th>
+									</tr>
+									</thead>
+									<tbody>';
+									while($row = mysqli_fetch_row($rs)) {
+										$id = $row[0];
+										$year = $row[1];
+										$title = $row[2];
+										$rating = $row[3];
+										print '<tr><th scope="row"><a class="nav-link  text-warning" href="movie_info.php?id=' .$id. '">' .$title . '</a></th>';
+										print '<td>' . $year . '</td></tr>';
+									}
+									print '</tbody>
+									</table>';
+								}
+								
 								?>
 							</center>
 							<br><br><br><br><br><br><br>
