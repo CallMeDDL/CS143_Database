@@ -84,7 +84,37 @@
 						<div class="col-2"></div>
 						<div class="col-10">
 							<?php
-								echo "test"
+							
+								$db = new mysqli('localhost', 'cs143', '', 'CS143');
+								if($db->connect_errno > 0){
+								die('Unable to connect to database [' . $db->connect_error . ']');
+								}
+
+								$id = 505;//$_GET[""];
+								//$title = $_GET[""];
+								//$year = $_GET[""];
+								$query1 = ("SELECT first, last, sex, dob, dod
+										    FROM Actor 
+										    WHERE Actor.id = $id
+										    ORDER BY first, last, sex, dob, dod;
+										   ");
+								$rs1 = $db->query($query1);
+								while($row = mysqli_fetch_row($rs1)) {
+									$first1 = $row[0];
+									$last1 = $row[1];
+									$sex1 = $row[2];
+									$dob1 = $row[3];
+									$dod1 = $row[4];
+								}
+								echo "Name: ".$first1." ".$last1."<br>";
+								echo "Sex: ".$sex1."<br>";
+								echo "Date of Birth: ".$dob1."<br>";
+								if ($dod1 != null) {
+									echo "Date of Birth: ".$dod1."<br>";
+								}
+								else {
+									echo "Date of Death: "."Still Alive"."<br>";
+								}
 							?>
 						</div>
 					</div>
@@ -103,7 +133,31 @@
 						<div class="col-2"></div>
 						<div class="col-10">
 							<?php
-								echo "test"
+							
+								// still has a bug
+								$db = new mysqli('localhost', 'cs143', '', 'CS143');
+								if($db->connect_errno > 0){
+								die('Unable to connect to database [' . $db->connect_error . ']');
+								}
+								
+								$id = 2568;// actor ID
+								//$title = $_GET[""];
+								//$year = $_GET[""];
+								$query2 = ("SELECT title, role 
+										    FROM Movie 
+										    INNER JOIN MovieActor ON Movie.id = MovieActor.mid
+										    WHERE MovieActor.aid = $id
+										    ORDER BY role, title;
+										   ");
+							
+								$rs2 = $db->query($query2);
+						
+								while($row = mysqli_fetch_row($rs2)) {
+									$title = $row[0];
+									$role = $row[1];
+									echo "Role: ".$role."<br>";
+									echo "title: ".$title."<br>";
+								}
 							?>
 						</div>
 					</div>
