@@ -116,6 +116,10 @@
 							</div>
 						</div>
 					</div>
+					<?php
+					$id = $_GET["id"];
+					print '<input type="hidden" name="id" value="' .$id. '">';
+					?>
 				</form>
 				<div class="container">
 					<div class="row">
@@ -131,25 +135,25 @@
 									die('Unable to connect to database [' . $db->connect_error . ']');
 									}
 
-									$mid = 3563;
+									$id = $_GET["id"];
 									$name = $_GET["name"];
 									$rating = $_GET["rating"];
 									$comment = $_GET["comment"];
 									$comment = $db->real_escape_string($comment);
 
-									$db->query("INSERT INTO Review VALUES('$name', now(), $mid, $rating, '$comment');");
-
-								 	$rs = $db->query(" SELECT name, rating, comment
-								 					   FROM Review
-								 					   WHERE Review.mid = $mid;
-								 					 ");
-								 	while($row = mysqli_fetch_row($rs)) {
-									$name = $row[0];
-									$rating = $row[1];
-									//$comment = $row[2];
-									echo "Name: ".$name."<br>";
-									echo "Rating: ".$rating."<br>";
-									echo "Comment: ".$comment."<br>";
+									if (isset($_GET["id"]) && isset($_GET["name"]) && isset($_GET["rating"])){
+										$query = "INSERT INTO Review VALUES('$name', now(), $id, $rating, '$comment');";
+										if (!($rs = $db->query($query))){
+											$errmsg = $db->error;
+											print "<h5>Query failed: $errmsg</h5> <br />";
+											exit(1);
+										}
+										else {
+										 	print '<h5>Succesfully Add New Comment into our database!</h5><br>';
+											echo "Name: ".$name."<br>";
+											echo "Rating: ".$rating."<br>";
+											echo "Comment: ".$comment."<br>";
+										}
 									}
 								?>
 							</center>

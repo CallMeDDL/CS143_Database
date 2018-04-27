@@ -255,6 +255,10 @@
 						<div class="col-2">
 							<form action="comment.php" method="get">
 								<input type="submit" class="btn btn-outline-warning btn-block" value="Add Comment">
+								<?php
+								$id = $_GET["id"];
+								print '<input type="hidden" name="id" value="' .$id. '">';
+								?>
 							</form> 
 						</div>
 					</div>
