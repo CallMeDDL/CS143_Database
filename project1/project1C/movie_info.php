@@ -50,6 +50,15 @@
 						</li>
 					</ul>
 				</div>
+				<br><br>
+				<div class="sidebar-sticky">
+					<ul class="nav flex-column">
+						<h5>Searching Option</h5>
+						<li class="nav-item">
+							<a class="nav-link  text-warning" href="search.php">Search Actor or Movie</a>
+						</li>
+					</ul>
+				</div>
 			</nav>
 			<div class="col-9">
 				<br><br>
@@ -203,7 +212,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-2"></div>
-						<div class="col-10">
+						<div class="col-8">
 							<?php
 								$db = new mysqli('localhost', 'cs143', '', 'CS143');
 								if($db->connect_errno > 0){
@@ -215,15 +224,25 @@
 											WHERE mid = $id;"
 										  );
 								$rs4 = $db->query($query4);
-
+								print '<table class="table table-bordered">
+									<thead class="thead-light">
+									<tr>
+									<th scope="col">User Name</th>
+									<th scope="col">Rating</th>
+									<th scope="col">Comment</th>
+									</tr>
+									</thead>
+									<tbody>';
 								while($row = mysqli_fetch_row($rs4)) {
 									$name4 = $row[0];
 									$rating4 = $row[1];
 									$commnet4 = $row[2];
-									echo "Name: ".$name4."<br>";
-									echo "Rating: ".$rating4."<br>";
-									echo "Comment: ".$cpmment4."<br>";
+									print '<tr><th scope="row">' .$name4. '</th>';
+									print '<td>' . $rating4 . '</td>';
+									print '<td>' . $comment4 . '</td></tr>';
 								}
+								print '</tbody>
+									</table>';
 							
 							?>
 						</div>

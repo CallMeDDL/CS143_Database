@@ -50,6 +50,15 @@
 						</li>
 					</ul>
 				</div>
+				<br><br>
+				<div class="sidebar-sticky">
+					<ul class="nav flex-column">
+						<h5>Searching Option</h5>
+						<li class="nav-item">
+							<a class="nav-link  text-warning" href="search.php">Search Actor or Movie</a>
+						</li>
+					</ul>
+				</div>
 			</nav>
 			<div class="col-9">
 				<br><br>
