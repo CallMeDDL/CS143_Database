@@ -79,10 +79,7 @@
 								if($db->connect_errno > 0){
 								die('Unable to connect to database [' . $db->connect_error . ']');
 								}
-
-								$id = 3563;//$_GET[""];
-								//$title = $_GET[""];
-								//$year = $_GET[""];
+								$id = $_GET["id"];
 								$query1 = ("SELECT rating, company, year, title 
 										   FROM Movie 
 										   WHERE id = $id
@@ -126,17 +123,15 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-2"></div>
-						<div class="col-10">
+						<div class="col-8">
 							<?php
 								$db = new mysqli('localhost', 'cs143', '', 'CS143');
 								if($db->connect_errno > 0){
 								die('Unable to connect to database [' . $db->connect_error . ']');
 								}
 
-								$id = 3563;//$_GET[""];
-								//$title = $_GET[""];
-								//$year = $_GET[""];
-								$query3 = ("SELECT first, last, role
+								$id = $_GET["id"];
+								$query3 = ("SELECT first, last, role, id
 										   FROM Actor 
 										   INNER JOIN MovieActor ON Actor.id = MovieActor.aid
 										   WHERE MovieActor.mid = $id
@@ -150,13 +145,24 @@
 								// 		   ");
 								$rs3 = $db->query($query3);
 								// $rs4 = $db->query($query4);
+								print '<table class="table table-bordered">
+									<thead class="thead-light">
+									<tr>
+									<th scope="col">Actor Name</th>
+									<th scope="col">Role</th>
+									</tr>
+									</thead>
+									<tbody>';
 								while($row = mysqli_fetch_row($rs3)) {
 									$first1 = $row[0];
 									$last1 = $row[1];
 									$role  = $row[2];
-									echo "Name: ".$first1." ".$last1."<br>";
-									echo "Role: ".$role."<br>";
+									$aid = $row[3];
+									print '<tr><th scope="row"><a class="nav-link  text-warning" href="actor_info.php?id=' .$aid. '">' .$first1." ".$last1. '</a></th>';
+									print '<td>' . $role . '</td></tr>';
 								}
+								print '</tbody>
+									</table>';
 								// while($row = mysqli_fetch_row($rs4)) {
 								// 	$first2 = $row[0];
 								// 	$last2 = $row[1];
@@ -203,7 +209,7 @@
 								if($db->connect_errno > 0){
 								die('Unable to connect to database [' . $db->connect_error . ']');
 								}
-								$id = 3563;//$_GET[""];
+								$id = $_GET["id"];
 								$query4 = ("SELECT name, rating, comment 
 											FROM Review 
 											WHERE mid = $id;"
@@ -214,10 +220,10 @@
 									$name4 = $row[0];
 									$rating4 = $row[1];
 									$commnet4 = $row[2];
+									echo "Name: ".$name4."<br>";
+									echo "Rating: ".$rating4."<br>";
+									echo "Comment: ".$cpmment4."<br>";
 								}
-								echo "Name: ".$name4."<br>";
-								echo "Rating: ".$rating4."<br>";
-								echo "Comment: ".$cpmment4."<br>";
 							
 							?>
 						</div>
@@ -234,6 +240,7 @@
 						</div>
 					</div>
 				</div>
+				<br><br><br>
 			</div>
 		</div>
 	</div>

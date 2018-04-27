@@ -69,7 +69,6 @@
 							<div class="col-2">Movie name:</div>
 							<div class="col-6">
 								<input type="text" name="name" class="form-control">
-								<input type="hidden" name="sent" value="yes">
 							</div>
 						</div>
 					</div>
@@ -90,7 +89,6 @@
 							<br>
 							<h2>Result</h2>
 							<hr style="width: 100%; color: black; height: 1px;" />
-							<a class="nav-link  text-warning" href="movie_info.php">COCO</a>
 							<center>
 								<?php
 								
@@ -99,9 +97,7 @@
 								die('Unable to connect to database [' . $db->connect_error . ']');
 								}
 								$name = $_GET["name"];
-								$sent = $_GET["sent"];
-								//$movieName = explode(" ", $name);
-								if ($sent == "yes"){
+								if (isset($_GET["name"])){
 									if ($name != "") {
 										$query = ("SELECT id, year, title, rating
 										           FROM Movie 
@@ -115,18 +111,25 @@
 											   ORDER BY title, year, id, rating;
 												  ");
 									}
-								}
-								$rs = $db->query($query);
-
-								while($row = mysqli_fetch_row($rs)) {
-									$id = $row[0];
-									$year = $row[1];
-									$title = $row[2];
-									$rating = $row[3];
-									//echo "Movie ID: ".$id."<br>";
-									echo "Movie Name: ".$title."<br>";
-									echo "Movie Year: ".$year."<br>";
-									//echo "Movie Rating: ".$rating."<br>";
+									$rs = $db->query($query);
+									print '<table class="table table-bordered">
+									<thead class="thead-light">
+									<tr>
+									<th scope="col">Movie Name</th>
+									<th scope="col">Year</th>
+									</tr>
+									</thead>
+									<tbody>';
+									while($row = mysqli_fetch_row($rs)) {
+										$id = $row[0];
+										$year = $row[1];
+										$title = $row[2];
+										$rating = $row[3];
+										print '<tr><th scope="row"><a class="nav-link  text-warning" href="movie_info.php?id=' .$id. '">' .$title . '</a></th>';
+										print '<td>' . $year . '</td></tr>';
+									}
+									print '</tbody>
+									</table>';
 								}
 								
 								?>
