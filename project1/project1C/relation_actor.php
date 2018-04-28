@@ -166,7 +166,20 @@
 								$aid = $_GET["aid"];
 								$role = $_GET["role"];
 								if (isset($_GET["role"])){
-									// insert relation here
+									if ($mid != null && $aid != null) {
+										$query = ("INSERT INTO MovieActor VALUES($mid, $aid, '$role');");
+										if (!($rs = $db->query($query))){
+												$errmsg = $db->error;
+												print "<h5>Query failed: $errmsg</h5> <br />";
+												exit(1);
+										}
+										else {
+										 	print '<h5>Succesfully Add Movie and Director Relation into our database!</h5><br>';
+											echo "Movie ID: ".$mid."<br>";
+											echo "Actor ID: ".$aid."<br>";
+											echo "Actor Role: ".$role."<br>";
+										}
+									}
 								}
 								?>
 							</center>
