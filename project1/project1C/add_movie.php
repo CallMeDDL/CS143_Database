@@ -225,7 +225,7 @@
 								 	}
 									for ($i = 0; $i < $genreNum; $i++) {
 										$genre = $movieGenre[i];
-										$dbc->query("INSERT INTO MovieGenre VALUES($id, '$genre');");
+										$db->query("INSERT INTO MovieGenre VALUES($id, '$genre');");
 										echo $genre. " ";
 									}
 								}	
