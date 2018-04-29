@@ -117,18 +117,20 @@
 									$year = $row[2];
 									$title = $row[3];
 								}
+								echo "Title: ".$title." (".$year.") "."<br>";
+								echo "Producer: ".$company."<br>";
+								echo "MPAA Rating: ".$rating."<br>";
+								echo "Genre: ";
 								while($row = mysqli_fetch_row($rs2)) {
 									$genre = $row[0];
+									echo $genre . " ";
 								}
+								echo "<br>";
 								while($row = mysqli_fetch_row($rs3)) {
 									$first = $row[0];
 									$last = $row[1];
 								}
-								echo "Title: ".$title."( ".$year." )"."<br>";
-								echo "Producer: ".$company."<br>";
-								echo "MPAA Rating: ".$rating."<br>";
-								echo "Genre: ".$genre."<br>";
-								echo "Director: ".$$first." ".$last."<br>";
+								echo "Director: ".$first." ".$last."<br>";
 							?>
 						</div>
 					</div>
@@ -253,22 +255,22 @@
 									</tr>
 									</thead>
 									<tbody>';
-									$count = 0;
-									$totalRating = 0;
+								$count = 0;
+								$totalRating = 0;
 								while($row = mysqli_fetch_row($rs4)) {
 									$name4 = $row[0];
 									$rating4 = $row[1];
-									$commnet4 = $row[2];
 									$count = $count + count($rating4);
 									$totalRating = $totalRating + $rating4;
  									print '<tr><th scope="row">' .$name4. '</th>';
 									print '<td>' . $rating4 . '</td>';
-									print '<td>' . $comment4 . '</td></tr>';
+									print '<td>' . $row[2] . '</td></tr>';
 								}
 								print '</tbody>
 									</table>';
-									
-								print '<td>' . "The Average Rating is : ".($totalRating / $count) . '</td></tr>';
+								if ($count > 0) {
+									print "The Average Rating is : ".($totalRating / $count);
+								}
 							?>
 						</div>
 					</div>

@@ -161,6 +161,7 @@
 					<div class="row">
 						<div class="col-2"></div>
 						<div class="col-10">
+							<center>
 							<?php
 							// Establishing a Connection
 							$db = new mysqli('localhost', 'cs143', '', 'CS143');
@@ -212,6 +213,7 @@
 							}
 							$db->close();
 							?>
+							<center>
 						</div>
 					</div>
 				</div>

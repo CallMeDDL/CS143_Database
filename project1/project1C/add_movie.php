@@ -78,7 +78,6 @@
 							<div class="col-2">Movie title</div>
 							<div class="col-6">
 								<input type="text" name="title" class="form-control">
-								<input type="hidden" name="sent" value="yes">
 							</div>
 						</div>
 					</div>
@@ -125,44 +124,44 @@
 							<div class="col-2"></div>
 							<div class="col-2">Genre:</div>
 							<div class="col-6">
-								<input type="checkbox" name="genre" value="drama">
-								<label for="drama">Drama</label>
-								<input type="checkbox" name="genre" value="comedy">
-								<label for="comedy">Comedy</label>
-								<input type="checkbox" name="genre" value="romance">
-								<label for="romance">Romance</label>
-								<input type="checkbox" name="genre" value="crime">
-								<label for="crime">Crime</label>
-								<input type="checkbox" name="genre" value="horror">
-								<label for="horror">Horror</label>
-								<input type="checkbox" name="genre" value="mystery">
-								<label for="mystery">Mystery</label>
-								<input type="checkbox" name="genre" value="thriller">
-								<label for="thriller">Triller</label>
-								<input type="checkbox" name="genre" value="action">
-								<label for="action">Action</label>
-								<input type="checkbox" name="genre" value="adventure">
-								<label for="adventure">Adventure</label>
-								<input type="checkbox" name="genre" value="fantasy">
-								<label for="fantasy">Fantasy</label>
-								<input type="checkbox" name="genre" value="documentary">
-								<label for="documentary">Documentary</label>
-								<input type="checkbox" name="genre" value="family">
-								<label for="family">Family</label>
-								<input type="checkbox" name="genre" value="sci-fi">
-								<label for="sci-fi">Sci-Fi</label>
-								<input type="checkbox" name="genre" value="animation">
-								<label for="animation">Animation</label>
-								<input type="checkbox" name="genre" value="musical">
-								<label for="musical">Musical</label>
-								<input type="checkbox" name="genre" value="war">
-								<label for="war">War</label>
-								<input type="checkbox" name="genre" value="western">
-								<label for="western">Western</label>
-								<input type="checkbox" name="genre" value="adult">
-								<label for="adult">Adult</label>
-								<input type="checkbox" name="genre" value="short">
-								<label for="short">Short</label>
+								<input type="checkbox" name="genre[]" value="drama">
+								<label for="Drama">Drama</label>
+								<input type="checkbox" name="genre[]" value="comedy">
+								<label for="Comedy">Comedy</label>
+								<input type="checkbox" name="genre[]" value="romance">
+								<label for="Romance">Romance</label>
+								<input type="checkbox" name="genre[]" value="crime">
+								<label for="Crime">Crime</label>
+								<input type="checkbox" name="genre[]" value="horror">
+								<label for="Horror">Horror</label>
+								<input type="checkbox" name="genre[]" value="mystery">
+								<label for="Mystery">Mystery</label>
+								<input type="checkbox" name="genre[]" value="thriller">
+								<label for="Thriller">Triller</label>
+								<input type="checkbox" name="genre[]" value="action">
+								<label for="Action">Action</label>
+								<input type="checkbox" name="genre[]" value="adventure">
+								<label for="Adventure">Adventure</label>
+								<input type="checkbox" name="genre[]" value="fantasy">
+								<label for="Fantasy">Fantasy</label>
+								<input type="checkbox" name="genre[]" value="documentary">
+								<label for="Documentary">Documentary</label>
+								<input type="checkbox" name="genre[]" value="family">
+								<label for="Family">Family</label>
+								<input type="checkbox" name="genre[]" value="sci-fi">
+								<label for="Sci-Fi">Sci-Fi</label>
+								<input type="checkbox" name="genre[]" value="animation">
+								<label for="Animation">Animation</label>
+								<input type="checkbox" name="genre[]" value="musical">
+								<label for="Musical">Musical</label>
+								<input type="checkbox" name="genre[]" value="war">
+								<label for="War">War</label>
+								<input type="checkbox" name="genre[]" value="western">
+								<label for="Western">Western</label>
+								<input type="checkbox" name="genre[]" value="adult">
+								<label for="Adult">Adult</label>
+								<input type="checkbox" name="genre[]" value="short">
+								<label for="Short">Short</label>
 							</div>
 						</div>
 					</div>
@@ -196,6 +195,7 @@
 							 	$company = $_GET["company"];
 							 	$movieGenre = $_GET["genre"];
 							 	
+							 	
 							 	// Issuing Queries
 							 	if (isset($_GET["title"]) && isset($_GET["year"]) && isset($_GET["rating"])){
 								 	$db->query("UPDATE MaxMovieID SET id = id + 1;");
@@ -221,14 +221,13 @@
 								 		echo "No Movie Genre set !";
 								 	}
 								 	else {
-								 		$genreNum = count($movieGenre);
-								 	}
-									for ($i = 0; $i < $genreNum; $i++) {
-										$genre = $movieGenre[i];
-										$db->query("INSERT INTO MovieGenre VALUES($id, '$genre');");
-										echo $genre. " ";
+										foreach ($movieGenre as $Genre){
+											$db->query("INSERT INTO MovieGenre VALUES($id, '$Genre');");
+											echo $Genre. " ";
+										}
 									}
 								}	
+								
 								?>
 							</center>
 							<br><br><br><br><br><br><br>
