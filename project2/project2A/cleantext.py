@@ -123,6 +123,9 @@ def sanitize(text):
     # Q1:
     text = text.replace("\t", " ")
     text = text.replace("\n", " ")
+    # Q2:
+    # remove url as [some text](http://ucla.edu)
+    text = re.sub(r'\[.*\]\(.*\)','',text)
 
     # Q3:
     text_list1 = text.split(" ")
