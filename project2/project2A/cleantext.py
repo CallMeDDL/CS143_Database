@@ -115,11 +115,64 @@ def sanitize(text):
     """
 
     # YOUR CODE GOES BELOW:
+    # Q1:
+    text = text.replace("\t", " ")
+    text = text.replace("\n", " ")
 
-    return [parsed_text, unigrams, bigrams, trigrams]
+    # Q3:
+    text_list1 = text.split(" ")
+    text_list1 = list(filter(None, text_list1))
+
+    # Q4 and Q5:
+    punctuation_allowed = ['.', '!', '?', ',', ';', ':']
+    text_list2 = list()
+    while text_list1:
+
+        # initialization
+        text_cur = text_list1.pop(0)
+        l = 0
+        r = len(text_cur) - 1
+
+        # parse the left part
+        text_new_left = list()
+        while l <= r:
+            if text_cur[l] in string.punctuation:
+                if text_cur[l] in punctuation_allowed:
+                    text_new_left.append(text_cur[l])
+                l += 1
+            else:
+                break
+
+        # parse the right part
+        text_new_right = list()
+        while l <= r:
+            if text_cur[r] in string.punctuation:
+                if text_cur[r] in punctuation_allowed:
+                    text_new_right.insert(0, text_cur[r])
+                r -= 1
+            else:
+                break
+
+        # parse the middle part
+        if l <= r:
+            text_new_mid = text_cur[l:r+1]
+        else:
+            text_new_mid = ""
+
+        # append the result
+        text_list2.extend(text_new_left)
+        if text_new_mid:
+            text_list2.append(text_new_mid)
+        text_list2.extend(text_new_right)
 
 
-if __name__ = "__main__":
+    # TODO: following 2 lines are just for demo purposes
+    text = " ".join(text_list2)
+    return text
+    # return [parsed_text, unigrams, bigrams, trigrams]
+
+
+if __name__ == "__main__":
     # This is the Python main function.
     # You should be able to run
     # python cleantext.py <filename>
@@ -128,3 +181,6 @@ if __name__ = "__main__":
     # pass to "sanitize" and print the result as a list.
 
     # YOUR CODE GOES BELOW.
+    text = "The he'll     lazy   fox, jumps -!sdf--= the \nlazy dog."
+    text = sanitize(text)
+    print(text)
