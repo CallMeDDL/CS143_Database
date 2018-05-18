@@ -120,7 +120,6 @@ def sanitize(text):
     """
 
     # YOUR CODE GOES BELOW:
-
     # Q1:
     text = text.replace("\t", " ")
     text = text.replace("\n", " ")
