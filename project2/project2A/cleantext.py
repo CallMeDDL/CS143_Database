@@ -193,10 +193,7 @@ def sanitize(text):
     for i in range(len(unigrams) - 2):
         trigrams.append(unigrams[i] + "_" + unigrams[i + 1] + "_" + unigrams[i + 2])
 
-    # TODO: following 2 lines are just for demo purposes
-    text = " ".join(text_list2)
-    return text
-    # return [parsed_text, unigrams, bigrams, trigrams]
+    return [parsed_text, unigrams, bigrams, trigrams]
 
 
 if __name__ == "__main__":
