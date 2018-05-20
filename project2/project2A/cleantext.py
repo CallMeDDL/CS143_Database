@@ -11,7 +11,6 @@ import argparse
 import sys
 from optparse import OptionParser
 import json
-import bz2
 
 
 __author__ = ""
@@ -204,13 +203,13 @@ Text Parsing"""
     input_file = args[0]
 
     # read it line by line, extract the proper value from the JSON,
-    fo = open(input_file, 'r')
-    for line in fo.readlines(): 
-        line = line.strip() 
-        #text = sanitize(line)
-        #print(text)
-    fo.close()
+    with open(input_file) as f:
+        for line in f:
+            data = json.loads(line)
+            #print (data["body"]) 
+            text = sanitize(data["body"])
+            print (text)
 
-    text = "The he'll     lazy   fox, jumps -!sdf--= the \nlazy dog."
-    text = sanitize(text)
-    print(text)
+    #text = "The he'll     lazy   fox, jumps -!sdf--= the \nlazy dog."
+    #text = sanitize(text)
+    #print(text)
