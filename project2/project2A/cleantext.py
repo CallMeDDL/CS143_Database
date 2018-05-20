@@ -225,9 +225,9 @@ Text Parsing"""
     with open(input_file) as f:
         for line in f:
             data = json.loads(line)
-            #print (data["body"]) 
-            text = sanitize(data["body"])
-            print (text)
+            parsed_text, unigrams, bigrams, trigrams = sanitize(data["body"])
+            print (parsed_text,unigrams,bigrams,trigrams)
+
 
     #text = "The he'll     lazy   fox, jumps -!sdf--= the \nlazy dog."
     #text = sanitize(text)
