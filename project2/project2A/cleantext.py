@@ -174,23 +174,27 @@ def sanitize(text):
     
     # Q6 & Q8
     # parsed_text
-    parsed_text = [item.lower() for item in text_list2]
-    
+    parsed_text1 = [item.lower() for item in text_list2]
+    parsed_text = ' '.join(str(e) for e in parsed_text1)
+
     # Unigrams
-    unigrams = []
-    for i in range(len(parsed_text)):
-        if parsed_text[i] not in string.punctuation:
-            unigrams.append(parsed_text[i])
+    unigrams1 = []
+    for i in range(len(parsed_text1)):
+        if parsed_text1[i] not in string.punctuation:
+            unigrams1.append(parsed_text1[i])
+    unigrams = ' '.join(str(f) for f in unigrams1)
 
     # Bigrams
-    bigrams = []
-    for i in range(len(unigrams) - 1):
-        bigrams.append(unigrams[i] + "_" + unigrams[i + 1])
+    bigrams1 = []
+    for i in range(len(unigrams1) - 1):
+        bigrams1.append(unigrams1[i] + "_" + unigrams1[i + 1])
+    bigrams = ' '.join(map(str, bigrams1))
 
     # Trigrams
-    trigrams = []
-    for i in range(len(unigrams) - 2):
-        trigrams.append(unigrams[i] + "_" + unigrams[i + 1] + "_" + unigrams[i + 2])
+    trigrams1 = []
+    for i in range(len(unigrams1) - 2):
+        trigrams1.append(unigrams1[i] + "_" + unigrams1[i + 1] + "_" + unigrams1[i + 2])
+    trigrams = ' '.join(str(e) for e in trigrams1)
 
     return [parsed_text, unigrams, bigrams, trigrams]
 
