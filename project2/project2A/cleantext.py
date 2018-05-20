@@ -122,6 +122,9 @@ def sanitize(text):
     # Q1:
     text = text.replace("\t", " ")
     text = text.replace("\n", " ")
+    # Q2:
+    # remove url as [some text](http://ucla.edu)
+    text = re.sub(r'\[.*\]\(.*\)','',text)
 
     # Q3:
     text_list1 = text.split(" ")
@@ -168,12 +171,28 @@ def sanitize(text):
         if text_new_mid:
             text_list2.append(text_new_mid)
         text_list2.extend(text_new_right)
+    
+    # Q6 & Q8
+    # parsed_text
+    parsed_text = [item.lower() for item in text_list2]
+    
+    # Unigrams
+    unigrams = []
+    for i in range(len(parsed_text)):
+        if parsed_text[i] not in string.punctuation:
+            unigrams.append(parsed_text[i])
 
+    # Bigrams
+    bigrams = []
+    for i in range(len(unigrams) - 1):
+        bigrams.append(unigrams[i] + "_" + unigrams[i + 1])
 
-    # TODO: following 2 lines are just for demo purposes
-    text = " ".join(text_list2)
-    return text
-    # return [parsed_text, unigrams, bigrams, trigrams]
+    # Trigrams
+    trigrams = []
+    for i in range(len(unigrams) - 2):
+        trigrams.append(unigrams[i] + "_" + unigrams[i + 1] + "_" + unigrams[i + 2])
+
+    return [parsed_text, unigrams, bigrams, trigrams]
 
 
 if __name__ == "__main__":
