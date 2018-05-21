@@ -131,7 +131,7 @@ def sanitize(text):
     text_list1 = list(filter(None, text_list1))
 
     # Q4 and Q5:
-    punctuation_allowed = ['.', '!', '?', ',', ';', ':']
+    punctuation_allowed = ['.', '!', '?', ',', ';', ':', '$']
     text_list2 = list()
     while text_list1:
 
