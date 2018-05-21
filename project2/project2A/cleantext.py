@@ -229,19 +229,27 @@ Text Parsing"""
     input_file = args[0]
 
     # read it line by line, extract the proper value from the JSON,
-
     with open(input_file) as f:
         for line in f:
             data = json.loads(line)
             res = []
             parsed_text, unigrams, bigrams, trigrams = sanitize(data["body"])
-            res.append(parsed_text)
-            res.append(unigrams)
-            res.append(bigrams)
-            res.append(trigrams)
+            res.append(parsed_text.encode('ascii', 'ignore'))
+            res.append(unigrams.encode('ascii', 'ignore'))
+            res.append(bigrams.encode('ascii', 'ignore'))
+            res.append(trigrams.encode('ascii', 'ignore'))
+            #print(type(str(parsed_text)))
             print (res)
     '''
+    res = []
     text = "I'm afraid I can't explain myself, sir. Because I am not myself, you see?"
     parsed_text, unigrams, bigrams, trigrams = sanitize(text)
-    print (unigrams)
+    res.append(parsed_text)
+    res.append(unigrams)
+    res.append(bigrams)
+    res.append(trigrams)
+    print (res)
     '''
+
+
+    
