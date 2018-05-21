@@ -124,8 +124,8 @@ def sanitize(text):
     text = text.replace("\n", " ")
     # Q2:
     # remove url as [some text](http://ucla.edu)
-    text = re.sub(r'\[.*\]\((https?:\/\/www\.|https?:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?\)','',text)
-    text = re.sub (r'(https?:\/\/www\.|https?:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?','',text)
+    text = re.sub(r'\[.*\]\((https?|ftp):\/\/(-\.)?([^\s/?\.#-]+\.?)+(\/[^\s]*)?\)','',text)
+    text = re.sub (r'(https?|ftp):\/\/(-\.)?([^\s/?\.#-]+\.?)+(\/[^\s]*)?','',text)
     
     
     # Q3:
