@@ -175,26 +175,29 @@ def sanitize(text):
     # Q6 & Q8
     # parsed_text
     parsed_text1 = [item.lower() for item in text_list2]
-    parsed_text = ' '.join(str(e) for e in parsed_text1)
+    parsed_text = ' '.join(e for e in parsed_text1)
 
     # Unigrams
     unigrams1 = []
     for i in range(len(parsed_text1)):
         if parsed_text1[i] not in string.punctuation:
             unigrams1.append(parsed_text1[i])
-    unigrams = ' '.join(str(f) for f in unigrams1)
+    unigrams = ' '.join(f for f in unigrams1)
 
     # Bigrams
+
     bigrams1 = []
-    for i in range(len(unigrams1) - 1):
-        bigrams1.append(unigrams1[i] + "_" + unigrams1[i + 1])
-    bigrams = ' '.join(map(str, bigrams1))
+    for i in range(len(parsed_text1) - 1):
+        if parsed_text1[i] not in punctuation_allowed and parsed_text1[i + 1] not in punctuation_allowed:
+            bigrams1.append(parsed_text1[i] + "_" + parsed_text1[i + 1])
+    bigrams = ' '.join(e for e in bigrams1)
 
     # Trigrams
     trigrams1 = []
-    for i in range(len(unigrams1) - 2):
-        trigrams1.append(unigrams1[i] + "_" + unigrams1[i + 1] + "_" + unigrams1[i + 2])
-    trigrams = ' '.join(str(e) for e in trigrams1)
+    for i in range(len(parsed_text1) - 2):
+        if parsed_text1[i] not in punctuation_allowed and parsed_text1[i + 1] not in punctuation_allowed and parsed_text1[i + 2] not in punctuation_allowed:
+            trigrams1.append(parsed_text1[i] + "_" + parsed_text1[i + 1] + "_" + parsed_text1[i + 2])
+    trigrams = ' '.join(e for e in trigrams1)
 
     return [parsed_text, unigrams, bigrams, trigrams]
 
@@ -226,6 +229,7 @@ Text Parsing"""
     input_file = args[0]
 
     # read it line by line, extract the proper value from the JSON,
+
     with open(input_file) as f:
         for line in f:
             data = json.loads(line)
@@ -236,3 +240,8 @@ Text Parsing"""
             res.append(bigrams)
             res.append(trigrams)
             print (res)
+    '''
+    text = "I'm afraid I can't explain myself, sir. Because I am not myself, you see?"
+    parsed_text, unigrams, bigrams, trigrams = sanitize(text)
+    print (unigrams)
+    '''
