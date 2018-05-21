@@ -131,7 +131,7 @@ def sanitize(text):
     text_list1 = list(filter(None, text_list1))
 
     # Q4 and Q5:
-    punctuation_allowed = ['.', '!', '?', ',', ';', ':', '$']
+    punctuation_allowed = ['.', '!', '?', ',', ';', ':']
     text_list2 = list()
     while text_list1:
 
@@ -143,7 +143,7 @@ def sanitize(text):
         # parse the left part
         text_new_left = list()
         while l <= r:
-            if text_cur[l] in string.punctuation:
+            if text_cur[l] in string.punctuation and text_cur[l] != '$':
                 if text_cur[l] in punctuation_allowed:
                     text_new_left.append(text_cur[l])
                 l += 1
@@ -153,7 +153,7 @@ def sanitize(text):
         # parse the right part
         text_new_right = list()
         while l <= r:
-            if text_cur[r] in string.punctuation:
+            if text_cur[r] in string.punctuation and text_cur[r] != '$':
                 if text_cur[r] in punctuation_allowed:
                     text_new_right.insert(0, text_cur[r])
                 r -= 1
