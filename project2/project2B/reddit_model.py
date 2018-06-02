@@ -5,7 +5,7 @@ import re
 import string
 import argparse
 from pyspark.sql.functions import udf, col
-from pyspark.sql.types import LongType, StringType
+from pyspark.sql.types import LongType, StringType, ArrayType
 
 # IMPORT OTHER MODULES HERE
 def sanitize1(test):
@@ -88,8 +88,8 @@ def sanitize1(test):
     
     comments = []
     comments = unigrams1 + bigrams1 + trigrams1
-    comm = ' '.join(str(e) for e in comments)
-    return comm
+    #comm = ' '.join(str(e) for e in comments)
+    return comments
 
 
 def main(context):
@@ -108,7 +108,7 @@ def main(context):
     # df_com.describe().show()
     
     # Task 4 & 5:
-    sanitize_udf = udf(sanitize1, StringType())
+    sanitize_udf = udf(sanitize1, ArrayType(StringType()))
     df_sanitize = df_com.select("id", sanitize_udf(col("body")).alias("comments"))
     #df_sanitize.show()
 
