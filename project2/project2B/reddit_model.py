@@ -1,9 +1,6 @@
 from __future__ import print_function
 from pyspark import SparkConf, SparkContext
 from pyspark.sql import SQLContext
-import re
-import string
-import argparse
 from pyspark.sql.functions import udf, col
 from pyspark.sql.types import LongType, StringType, ArrayType
 from pyspark.ml.feature import CountVectorizer
@@ -88,7 +85,7 @@ def main(context):
     # Task 4 & 5:
     sanitize_udf = udf(sanitize, ArrayType(StringType()))
     df_sanitize = df_com.select("id", sanitize_udf(col("body")).alias("comments"))
-    df_sanitize.show()
+    #df_sanitize.show()
 
     # save data
     """
