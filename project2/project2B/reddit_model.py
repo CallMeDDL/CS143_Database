@@ -111,13 +111,13 @@ def main(context):
     # Task 6B
 
     df_cv.createOrReplaceTempView('view_cv')
-    df_poslabel = sqlContext.sql('SELECT Input_id, IF(labeldjt = 1, 1, 0) AS poslabel FROM view_lab')
+    df_poslabel = sqlContext.sql('SELECT Input_id, IF(labeldjt = 1, 1, 0) AS label FROM view_lab')
     df_poslabel.createOrReplaceTempView('view_poslab')
-    df_pos = sqlContext.sql('SELECT id, features, view_poslab.label AS label FROM view_cv INNER JOIN view_poslab ON view_poslab.Input_id = view_cv.id')
+    df_pos = sqlContext.sql('SELECT id, features, view_poslab.label AS poslabel FROM view_cv INNER JOIN view_poslab ON view_poslab.Input_id = view_cv.id')
 
-    df_neglabel = sqlContext.sql('SELECT Input_id, IF(labeldjt = -1, 1, 0) AS neglabel FROM view_lab')
+    df_neglabel = sqlContext.sql('SELECT Input_id, IF(labeldjt = -1, 1, 0) AS label FROM view_lab')
     df_neglabel.createOrReplaceTempView('view_neglab')
-    df_neg = sqlContext.sql('SELECT id, features, view_neglab.label AS label FROM view_cv INNER JOIN view_neglab ON view_neglab.Input_id = view_cv.id')
+    df_neg = sqlContext.sql('SELECT id, features, view_neglab.label AS neglabel FROM view_cv INNER JOIN view_neglab ON view_neglab.Input_id = view_cv.id')
 
     # Task 7
     train_process(df_pos, df_neg)
