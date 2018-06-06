@@ -1,0 +1,112 @@
+2018-06-06 02:21:43 WARN  Utils:66 - Your hostname, cs143 resolves to a loopback address: 127.0.1.1; using 10.0.2.15 instead (on interface enp0s3)
+2018-06-06 02:21:43 WARN  Utils:66 - Set SPARK_LOCAL_IP if you need to bind to another address
+2018-06-06 02:21:44 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2018-06-06 02:21:45 WARN  Utils:66 - Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+2018-06-06 02:21:45 WARN  Utils:66 - Service 'SparkUI' could not bind on port 4041. Attempting port 4042.
+2018-06-06 02:21:45 WARN  Utils:66 - Service 'SparkUI' could not bind on port 4042. Attempting port 4043.
+percentage of positive 0.325054
+Percentage of negative 0.875810
++-------+--------------------+-------+
+|link_id|               title|pos_pct|
++-------+--------------------+-------+
+| 5pcu6p|Women's March on ...|    1.0|
+| 65zoc8|Trump has spent o...|    0.0|
+| 7evyjt|A Russian Journal...|    1.0|
+| 5qnnj4|Mexicans target S...|    0.0|
+| 79qrlp|Murdoch-owned out...|    0.4|
+| 6aoa7h|Tennessee makes c...|    1.0|
+| 7f970c|To NFL millionair...|    0.0|
+| 71ylaz|Trump disinvites ...|    1.0|
+| 6shvay|Bharara calls rep...|    1.0|
+| 6t5n55|Trump administrat...|    0.0|
+| 80wsww|Trump: 'Disgracef...|    0.0|
+| 5tv1ck|I'm Patrick Kings...|    0.0|
+| 6po0p9|Donald Trump rein...|    1.0|
+| 5kafr7|The RNC Says Its ...|    0.0|
+| 7o4pc1|Trump admin moves...|    1.0|
+| 6beigs|When the World Is...|    1.0|
+| 6a80p9|The FBI Just Gave...|    1.0|
+| 61ipsr|Oops... PAC Runs ...|    0.0|
+| 5ecrqc|Donald Trump disa...|    0.0|
+| 6jdxcq|A Message to Trum...|    0.0|
++-------+--------------------+-------+
+only showing top 20 rows
+
++-------+--------------------+-------+
+|link_id|               title|neg_pct|
++-------+--------------------+-------+
+| 5pcu6p|Women's March on ...|    1.0|
+| 65zoc8|Trump has spent o...|    1.0|
+| 7evyjt|A Russian Journal...|    1.0|
+| 5qnnj4|Mexicans target S...|    0.0|
+| 79qrlp|Murdoch-owned out...|    0.7|
+| 6aoa7h|Tennessee makes c...|    1.0|
+| 7f970c|To NFL millionair...|    1.0|
+| 71ylaz|Trump disinvites ...|    1.0|
+| 6shvay|Bharara calls rep...|    1.0|
+| 6t5n55|Trump administrat...|    1.0|
+| 80wsww|Trump: 'Disgracef...|    1.0|
+| 5tv1ck|I'm Patrick Kings...|    1.0|
+| 6po0p9|Donald Trump rein...|    1.0|
+| 5kafr7|The RNC Says Its ...|    1.0|
+| 7o4pc1|Trump admin moves...|    1.0|
+| 6beigs|When the World Is...|    1.0|
+| 6a80p9|The FBI Just Gave...|    0.0|
+| 61ipsr|Oops... PAC Runs ...|    1.0|
+| 5ecrqc|Donald Trump disa...|    0.0|
+| 6jdxcq|A Message to Trum...|    1.0|
++-------+--------------------+-------+
+only showing top 20 rows
+
++-------------------+-------+
+|               time|pos_pct|
++-------------------+-------+
+|2017-03-24 15:55:33|    0.0|
+|2016-12-05 12:28:40|    0.0|
+|2017-03-09 09:22:21|    0.0|
+|2016-12-26 10:24:00|    1.0|
+|2018-02-23 09:06:14|    0.0|
+|2017-10-30 15:45:49|    1.0|
+|2018-01-25 16:12:43|    0.0|
+|2017-11-24 16:56:17|    0.0|
+|2017-02-18 17:44:25|    0.0|
+|2018-02-13 14:15:09|    0.0|
+|2017-04-28 13:24:11|    0.0|
+|2017-01-31 16:46:07|    1.0|
+|2016-12-09 04:39:04|    0.0|
+|2018-02-18 13:37:49|    0.0|
+|2018-01-10 22:10:32|    0.0|
+|2017-06-05 12:07:48|    0.0|
+|2016-11-23 09:14:00|    0.0|
+|2017-11-21 07:56:40|    0.0|
+|2017-01-25 15:12:18|    0.0|
+|2017-11-09 23:34:17|    1.0|
++-------------------+-------+
+only showing top 20 rows
+
++-------------------+-------+
+|               time|neg_pct|
++-------------------+-------+
+|2017-03-24 15:55:33|    1.0|
+|2016-12-05 12:28:40|    1.0|
+|2017-03-09 09:22:21|    0.0|
+|2016-12-26 10:24:00|    1.0|
+|2018-02-23 09:06:14|    1.0|
+|2017-10-30 15:45:49|    0.0|
+|2018-01-25 16:12:43|    1.0|
+|2017-11-24 16:56:17|    1.0|
+|2017-02-18 17:44:25|    1.0|
+|2018-02-13 14:15:09|    1.0|
+|2017-04-28 13:24:11|    1.0|
+|2017-01-31 16:46:07|    0.0|
+|2016-12-09 04:39:04|    1.0|
+|2018-02-18 13:37:49|    1.0|
+|2018-01-10 22:10:32|    1.0|
+|2017-06-05 12:07:48|    1.0|
+|2016-11-23 09:14:00|    1.0|
+|2017-11-21 07:56:40|    1.0|
+|2017-01-25 15:12:18|    1.0|
+|2017-11-09 23:34:17|    1.0|
++-------------------+-------+
+only showing top 20 rows
+
