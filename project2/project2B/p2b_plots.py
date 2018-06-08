@@ -12,6 +12,7 @@ import numpy as np
 from mpl_toolkits.basemap import Basemap as Basemap
 from matplotlib.colors import rgb2hex
 from matplotlib.patches import Polygon
+from sklearn.metrics import roc_curve, auc
 
 
 """
@@ -210,3 +211,46 @@ plt.legend(loc='lower right');
 plt.xlabel('President Trump Sentiment by Comment Score')
 plt.ylabel("Percent Sentiment")
 plt.savefig("./plots/part5_com.png")
+
+
+
+# =============================== PART 7 ROC =====================================
+ROC_pos = pd.read_csv("./output/posResult_ROC.csv/part-00000-f1d01163-357d-4e21-be50-b72107fb73df-c000.csv")
+ROC_neg = pd.read_csv("./output/negResult_ROC.csv/part-00000-dad86fac-f92a-4436-b7d0-69e23c5d147d-c000.csv")
+
+prob_pos = ROC_pos['probability']
+label_pos = list()
+prob_neg = ROC_neg['probability']
+label_neg = list()
+
+label = ROC_pos['label']
+for i in range(len(label)):
+	if label[i] != 1:
+		label_pos.append(0)
+	else:
+		label_pos.append(1)
+for i in range(len(label)):
+	if label[i] != -1:
+		label_neg.append(0)
+	else:
+		label_neg.append(1)
+
+fpr_pos, tpr_pos, _ = roc_curve(label_pos, prob_pos)
+fpr_neg, tpr_neg, _ = roc_curve(label_neg, prob_neg)
+
+auc_pos = auc(fpr_pos, tpr_pos)
+auc_neg = auc(fpr_neg, tpr_neg)
+
+
+plt.figure(figsize=(12, 5))
+lw = 2
+plt.plot(fpr_pos, tpr_pos, color='deeppink', lw=lw, label='ROC curve for pos (area = %0.2f)' % auc_pos)
+plt.plot(fpr_neg, tpr_neg, color='navy', lw=lw, label='ROC curve for neg (area = %0.2f)' % auc_neg)
+plt.plot([0, 1], [0, 1], color='black', lw=lw, linestyle='--')
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('Receiver Operating Characteristic')
+plt.legend(loc="lower right")
+plt.savefig("./plots/part7.png")
