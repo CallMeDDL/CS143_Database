@@ -1,0 +1,30 @@
+1. Top 10 positive stories:
+
+id	    	title																									Positive
+dfg2vqf		Fox News mocked for 'alert' that Trump spent weekend working at White House								1
+dnbk4mc		Jimmy Kimmel continues war against GOP senator over health care bill									1
+dm65y90		Ten-day march from Charlottesville to DC to start Monday												1
+dqz1v0b		Trump huddles on Air Force One with Republicans plotting to purge Mueller								1
+dmtb8c2		McCain: 'We have to understand that the climate may be changing'										1
+dtvuoia		D.C. Council hits Trump over military parade: 'Giant Tank Parade is cancelled'							1
+djk80i1		Sarah Sanders blames Mika Brzezinski for president's sexist bullying									1
+du4kdm8		Donald Trumpâ€™s Inaugural Committee Still Wonâ€™t Say What Itâ€™s Doing With Its Leftover Money		1
+dbfdtb8		Gingrich says Trump canâ€™t be expected to follow ethics laws, so Congress should change them for him	1
+dpuwqse		CNNâ€™s Acosta fires back at Trump after insult: â€˜If only he were this tough on Duterteâ€™			1
+
+
+
+
+2. Top 10 negative stories:
+
+id	    	title																									Negative
+dtsbzti		Trump calls Democrats \un-American\" and \"treasonous\""												1
+dfg2vqf		Fox News mocked for 'alert' that Trump spent weekend working at White House								1
+dnbk4mc		Jimmy Kimmel continues war against GOP senator over health care bill									1
+dnqe2lg		Trump can't accept brown people and women calling him out												1
+dtfvdub		Trump Administration Signals It Is Not Imposing New Sanctions On Russia									1
+dnb2s2e		Dem sen: It's a 'lie' that ObamaCare repeal bill has coverage of pre-existing conditions				1
+dm65y90		Ten-day march from Charlottesville to DC to start Monday												1
+dqvs0if		Trump ends homeless vets program as their numbers rise for first time in 7 years						1
+dsivy58		Sarah Sanders accidentally admits Americans credit President Obama for the economy						1
+drzysw4		Trump Halts $13 Billion Obama Amtrak Plan Despite Calls For Infrastructure Spending in 2018				1
