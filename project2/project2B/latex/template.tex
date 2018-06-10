@@ -22,7 +22,8 @@
  
 \title{Project 2B Report}
 \author{Yutong Han 705025619 \\
-		\\
+		Tianyi Liu 705035425
+		Yufeng Huang 704944399\\
 		\\
 		\\
 		}
@@ -78,9 +79,71 @@ The Figure.\ref{fig:4} shows the different of positive and negative sentiment ac
      \label {fig:4}
  \end{figure}
  
+ 
  \section{Top 10 positive stories}
- \section{Create TWO scatterplots where the X axis is the submission score,}
- \section {Produce the ROC curves}
+The following two tables, table \ref{table1} and table \ref{table2} shows the list of top 10 positive stories and top 10 negative stories.\\
+\begin{table}[!h]
+\center
+\caption{Top 10 positive stories}
+\scalebox{0.9}{
+\begin{tabular}{r|c}
+\hline
+\textbf{ID} & \textbf{Title} \\\hline
+dtsbzti & Fox News mocked for alert that Trump spent weekend working at White House \\\hline
+
+\end{tabular}}
+\label{table1}
+\end{table}
+
+
+\begin{table}[!h]
+\center
+\caption{Top 10 negtive stories}
+\scalebox{0.9}{
+\begin{tabular}{r|c}
+\hline
+\textbf{ID} & \textbf{Title} \\\hline
+dtsbzti & Fox News mocked for alert that Trump spent weekend working at White House \\\hline
+
+\end{tabular}}
+\label{table2}
+\end{table}
+
+
+\section{Create TWO scatterplots where the X axis is the submission score}
+The Figure.\ref{fig:5} and Figure.\ref{fig:6} create TWO scatterplots where the X axis is the submission score, and a second where the X axis is the comment score, and the Y access is the percentage positive and negative. The two different colors for positive and negative.
+\begin{figure}[!h]
+      \centering
+    \begin{subfigure}
+        \centering
+        \includegraphics[width=0.7\textwidth]{../plots/part5_com.png}
+        \caption{Sentiment by comment score}
+        \label{fig:5}
+    \end{subfigure}%
+    \vspace{1em}
+    \begin{subfigure}
+       \centering
+        \includegraphics[width=0.7\textwidth]{../plots/part5_sub.png}
+        \caption{Sentiment by submission score}
+        \label{fig:6}
+    \end{subfigure}
+\end{figure}
+
+
+\section{Produce the ROC curves}
+The Figure.\ref{fig:7} plot the ROC for the classifier.
+\begin{figure}[!h]
+     \begin{center}
+                  \includegraphics[width=0.8\textwidth]{../plots/part7.png}
+    \end{center}
+    \caption{%
+       Receiver Operating Characteristic
+     }%sl
+   \label{fig:7}
+\end{figure}
+
+
+ 
 \section {summarizing your finding}
 \section {Question 1}
 Take a look at $labeled\_data.csv$ Write the functional dependencies implied by the data.
