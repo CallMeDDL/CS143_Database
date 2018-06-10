@@ -4,6 +4,7 @@
  \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subfigure}
+\usepackage{pythonhighlight}
 
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -156,6 +157,27 @@ Take a look at the schema for the comments dataframe. Forget BCNF and 3NF. Does 
 
 
 \section {Question 3}
+Pick one of the joins that you executed for this project. Return the join with .explain() attached to it. Include the output. What do you notice? Explain what Spark SQL is doing during the join. Which join algorithm does Spark seem to be using?
+
+\textbf{Answer:} The Figure.\ref{fig:explain} shows the output of the .explain on the join operation 
+\begin{python}
+df_full = df_com_full
+	.join(df_sub_full, 
+	df_com_full.link_id == df_sub_full.sub_id, 
+	'inner')
+\end{python}
+
+Here we can notice that the Spark use the Hash Join algorithm (BroadcastHashJoin) and build the index on the right relation.  Spark first loads each relation and filter the not null key value we want to join on. Then project the values we want to select. And finally do the hash join on two relations using the Hash Join alogorithm.
+
+\begin{figure}[!h]
+     \begin{center}
+                  \includegraphics[width=1.12\textwidth]{explain.png}
+    \end{center}
+    \caption{%
+       Explain on Join Operation
+     }%sl
+     \label {fig:explain}
+ \end{figure}
  
 
 
