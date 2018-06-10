@@ -1,30 +1,31 @@
-1. Top 10 positive stories:
+﻿1. Top 10 positive stories:
 
-id	    	title																									Positive
-dfg2vqf		Fox News mocked for 'alert' that Trump spent weekend working at White House								1
-dnbk4mc		Jimmy Kimmel continues war against GOP senator over health care bill									1
-dm65y90		Ten-day march from Charlottesville to DC to start Monday												1
-dqz1v0b		Trump huddles on Air Force One with Republicans plotting to purge Mueller								1
-dmtb8c2		McCain: 'We have to understand that the climate may be changing'										1
-dtvuoia		D.C. Council hits Trump over military parade: 'Giant Tank Parade is cancelled'							1
-djk80i1		Sarah Sanders blames Mika Brzezinski for president's sexist bullying									1
-du4kdm8		Donald Trumpâ€™s Inaugural Committee Still Wonâ€™t Say What Itâ€™s Doing With Its Leftover Money		1
-dbfdtb8		Gingrich says Trump canâ€™t be expected to follow ethics laws, so Congress should change them for him	1
-dpuwqse		CNNâ€™s Acosta fires back at Trump after insult: â€˜If only he were this tough on Duterteâ€™			1
+id          title                                                                                                                                         Positive
+dnzno4z     Diplomat regrets â€˜new turnâ€™ with U.S                                                                                                      1
+dfs0vzl     Federal judge blocks Indiana abortion ultrasound mandate                                                                                      1
+dop6avh     President Trump Promotes Book by â€˜Wonderfulâ€™ Pastor Who Says Satan Founded the Catholic Church                                            1
+dqsb8v2     Prosecutors say longtime Manafort colleague has â€˜tiesâ€™ to Russian intelligence, the first such allegation by the special counsel          1
+dhsmsbd     Anderson Cooper to Trump surrogate: 'If he took a dump on his desk, you'd defend it'                                                          1
+dht0d5u     WH Official: NYT, WaPo Reports Are 'Coordinated Attack' on Trump                                                                              1
+dryjzw2     Russian tankers reportedly smuggling oil to North Korea: Trump has been silent, though one day earlier, he blasted China for the same thing.  1
+dkxzvnm     Ben Shapiro: 'Views Should Never be Banned'                                                                                                   1
+dlbi7zb     Feinstein: We Canâ€™t Increase Immigration Enforcement Because No One Will Pick Our Fruit                                                     1
+dmtjwsg     Mr. President, Theyâ€™re Never Going To Like You                                                                                              1
 
 
 
 
 2. Top 10 negative stories:
 
-id	    	title																									Negative
-dtsbzti		Trump calls Democrats \un-American\" and \"treasonous\""												1
-dfg2vqf		Fox News mocked for 'alert' that Trump spent weekend working at White House								1
-dnbk4mc		Jimmy Kimmel continues war against GOP senator over health care bill									1
-dnqe2lg		Trump can't accept brown people and women calling him out												1
-dtfvdub		Trump Administration Signals It Is Not Imposing New Sanctions On Russia									1
-dnb2s2e		Dem sen: It's a 'lie' that ObamaCare repeal bill has coverage of pre-existing conditions				1
-dm65y90		Ten-day march from Charlottesville to DC to start Monday												1
-dqvs0if		Trump ends homeless vets program as their numbers rise for first time in 7 years						1
-dsivy58		Sarah Sanders accidentally admits Americans credit President Obama for the economy						1
-drzysw4		Trump Halts $13 Billion Obama Amtrak Plan Despite Calls For Infrastructure Spending in 2018				1
+id          title                                                                                                                                         Negative
+dtl0kfs     FBI director prepared to issue rebuttal if Nunes memo released                                                                                1
+den7nsu     Adding a Dislike Button to Twitter Could Neutralize Trump's Social Media Presence                                                             1
+di419p4     'This is off the map': Former intelligence officials say the reported Kushner-Russia plan is unlike anything they've ever seen                1
+dhnhxbt     Graham invites Comey to testify before Senate panel                                                                                           1
+diw3ehp     Rep. DeSantis: Man Asked Whether Republicans or Dems Were on Field Before Scalise Shooting                                                    1
+dozvoc1     Former President Obama called for jury duty in Chicago                                                                                        1
+dg76w4g     Trump Says He May Freeze Subsidies to the Poor Until Democrats Repeal Obamacare                                                               1
+dhc6yws     Republican Senator Graham to examine Trump's business deals: CNN                                                                              1
+di8wivz     GOP taps anti-Clinton strategy to damage Elizabeth Warren early                                                                               1
+dje8p0t     Russian Agents Used High Tech Alien Technology To Collude With Trump While Hiding Under James Comey's Floorboards, Sources Say                1
+
