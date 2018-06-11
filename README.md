@@ -1,7 +1,7 @@
 # CS143_Database
 Database Systems (18 spring)
 - Programming: PHP, MySQL, HTML, Python
-- Framework: LAMP (Linux, Apache, MySQL, PHP)
+- Framework: LAMP (Linux, Apache, MySQL, PHP), Spark
 - Tools: VirtualBox
 
 
@@ -24,5 +24,5 @@ Built a Web site on movies, actors and their reviews, supported by a relational 
 - Transformed the comment data into unigrams, bigrams and trigrams features
 - Trained a classifier to determine the sentiment toward Democrats and Republicans of a comment on Spark
 3. Model Evaluation
-- Run the classifiers on data on Reddit blog from 2016 to 2018.
-- Analysised the result data and found the relation between people's sentiment towards resident Trump and states, time or story.
+- Ran the classifier on Reddit blog comment data from 2016 to 2018.
+- Analysed the result and figured out the relation between people's sentiment towards resident Trump and states, time or story.
