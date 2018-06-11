@@ -108,50 +108,50 @@ def main(context):
 
     # ======================== Task 1 & 2 =========================
     # generate and save data
-    # df_com = sqlContext.read.json("./data/comments-minimal.json.bz2")
-    # df_sub = sqlContext.read.json("./data/submissions.json.bz2")
-    # df_lab = sqlContext.read.csv("./data/labeled_data.csv", header=True, inferSchema=True)
-    # df_lab.createOrReplaceTempView('view_lab')
-    # df_com = df_com.where('id IN (SELECT Input_id FROM view_lab)')
+    df_com = sqlContext.read.json("./data/comments-minimal.json.bz2")
+    df_sub = sqlContext.read.json("./data/submissions.json.bz2")
+    df_lab = sqlContext.read.csv("./data/labeled_data.csv", header=True, inferSchema=True)
+    df_lab.createOrReplaceTempView('view_lab')
+    df_com = df_com.where('id IN (SELECT Input_id FROM view_lab)')
     # df_com.write.parquet("./data/comments_minimal.parquet")
     # df_sub.write.parquet("./data/submissions.parquet")
     # df_lab.write.parquet("./data/labeled_data.parquet")
     
 
     # load data
-    # TODO: should be uncommented
+    """
     df_com = sqlContext.read.parquet("./data/comments_minimal.parquet")
     df_sub = sqlContext.read.parquet("./data/submissions.parquet")
     df_lab = sqlContext.read.parquet("./data/labeled_data.parquet")
+    """
 
 
 
 
     # ========================= Task 4 & 5 ========================
-    # TODO: should be uncommented
     sanitize_udf = udf(sanitize, ArrayType(StringType()))
 
 
     # generate and save data
-    # df_sanitize = df_com.select("id", sanitize_udf(col("body")).alias("comments"))
+    df_sanitize = df_com.select("id", sanitize_udf(col("body")).alias("comments"))
     # df_sanitize.write.parquet("./data/sanitize.parquet")
 
 
     # load data
-    # TODO: should be uncommented
+    """
     df_sanitize = sqlContext.read.parquet("./data/sanitize.parquet")
+    """
 
 
 
 
     # ========================== Task 6A ==========================
-    # TODO: should be uncommented
     cv = CountVectorizer(inputCol="comments", outputCol="features", binary=True, minDF=5.0)
     model = cv.fit(df_sanitize)
 
 
     # generate and save data
-    # df_cv = model.transform(df_sanitize)
+    df_cv = model.transform(df_sanitize)
     # df_cv.write.parquet("./data/CountVectorizer.parquet")
 
 
@@ -163,14 +163,14 @@ def main(context):
 
     #  ===================== Task 6B & Task 7 =====================
     # generate and save data
-    # df_cv.createOrReplaceTempView('view_cv')
-    # df_poslabel = sqlContext.sql('SELECT Input_id, IF(labeldjt = 1, 1, 0) AS label FROM view_lab')
-    # df_poslabel.createOrReplaceTempView('view_poslab')
-    # df_pos = sqlContext.sql('SELECT id, features, view_poslab.label AS label FROM view_cv INNER JOIN view_poslab ON view_poslab.Input_id = view_cv.id')
+    df_cv.createOrReplaceTempView('view_cv')
+    df_poslabel = sqlContext.sql('SELECT Input_id, IF(labeldjt = 1, 1, 0) AS label FROM view_lab')
+    df_poslabel.createOrReplaceTempView('view_poslab')
+    df_pos = sqlContext.sql('SELECT id, features, view_poslab.label AS label FROM view_cv INNER JOIN view_poslab ON view_poslab.Input_id = view_cv.id')
 
-    # df_neglabel = sqlContext.sql('SELECT Input_id, IF(labeldjt = -1, 1, 0) AS label FROM view_lab')
-    # df_neglabel.createOrReplaceTempView('view_neglab')
-    # df_neg = sqlContext.sql('SELECT id, features, view_neglab.label AS label FROM view_cv INNER JOIN view_neglab ON view_neglab.Input_id = view_cv.id')
+    df_neglabel = sqlContext.sql('SELECT Input_id, IF(labeldjt = -1, 1, 0) AS label FROM view_lab')
+    df_neglabel.createOrReplaceTempView('view_neglab')
+    df_neg = sqlContext.sql('SELECT id, features, view_neglab.label AS label FROM view_cv INNER JOIN view_neglab ON view_neglab.Input_id = view_cv.id')
 
     # df_pos.write.parquet("./data/pos.parquet")
     # df_neg.write.parquet("./data/neg.parquet")
@@ -184,7 +184,7 @@ def main(context):
 
 
     # ========================== Task 7 ===========================
-    # train_process(df_pos, df_neg)
+    train_process(df_pos, df_neg)
 
 
 
@@ -195,7 +195,6 @@ def main(context):
 
 
     # generate and save df_com_full
-    # TODO: should be uncommented
     df_com_full = df_com.select("id",idtype_udf(col("link_id")).alias("link_id"),"body","created_utc","author_flair_text",col('score').alias('com_score'))
     
     # df_com_full.write.parquet("./data/comfull.parquet")
@@ -205,7 +204,6 @@ def main(context):
 
 
     # generate and save df_sub_full
-    # TODO: should be uncommented
     df_sub_full = df_sub.select(col("id").alias("sub_id"), "title",col('score').alias('sub_score'))
 
     # df_sub_full.write.parquet("./data/subfull.parquet")
@@ -215,7 +213,6 @@ def main(context):
 
 
     # generate and save df_full
-    # TODO: should be uncommented
     df_full = df_com_full.join(df_sub_full, df_com_full.link_id == df_sub_full.sub_id, 'inner')
     df_full = df_full.select(col('id'), col('link_id'), col('created_utc'), col('body'), col('author_flair_text'), col('title'),col('com_score'),col('sub_score'))
     
@@ -228,7 +225,6 @@ def main(context):
 
 
     # ========================== Task 9 ===========================
-    # TODO: should be uncommented
     df_full = df_full.where("body not like '&gt%'")
     df_full = df_full.where("body not like '%/s%'")
     df_full_sanitize = df_full.select("id", sanitize_udf(col("body")).alias("comments"),col('link_id'), col('created_utc'),col('author_flair_text'), col('title'),col('com_score'),col('sub_score'))
@@ -240,7 +236,6 @@ def main(context):
 
 
     # generate and save posResult & negResult
-    # TODO: should be uncommented
     posResult = posModel.transform(df_cv_full)
     negResult = negModel.transform(df_cv_full)
 

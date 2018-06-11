@@ -23,14 +23,14 @@
  
 \title{Project 2B Report}
 \author{Yutong Han 705025619 \\
-		Tianyi Liu 705035425
 		Yufeng Huang 704944399\\
-		\\
-		\\
+		Yufei Hu 404944367\\
+		Tianyi Liu 705035425 \\
 		}
 \maketitle
  
 \section{Time Series Plot}
+
 The Figure.\ref{fig:1} shows the time series plot( by day) of positive and negative sentiment.
 
 \begin{figure}[!h]
@@ -46,7 +46,8 @@ The Figure.\ref{fig:1} shows the time series plot( by day) of positive and negat
 
 
 \section{Positive and Negative Sentiment of US State}
-The Figure.\ref{fig:2} and Figure.\ref{fig:3} shows the time series plot( by day) of positive and negative sentiment.
+
+The Figure.\ref{fig:2} and Figure.\ref{fig:3} shows maps of the states of the United States for positive sentiment and one for negative sentiment.
 
 \begin{figure}[!h]
       \centering
@@ -68,6 +69,7 @@ The Figure.\ref{fig:2} and Figure.\ref{fig:3} shows the time series plot( by day
 
 \newpage 
 \section{Sentiment Difference of US State}
+
 The Figure.\ref{fig:4} shows the different of positive and negative sentiment across the US States.
 
 \begin{figure}[!h]
@@ -80,18 +82,27 @@ The Figure.\ref{fig:4} shows the different of positive and negative sentiment ac
      \label {fig:4}
  \end{figure}
  
+\newpage  
+\section{Top 10 positive stories}
  
- \section{Top 10 positive stories}
 The following two tables, table \ref{table1} and table \ref{table2} shows the list of top 10 positive stories and top 10 negative stories.\\
 \begin{table}[!h]
 \center
 \caption{Top 10 positive stories}
 \scalebox{0.9}{
-\begin{tabular}{r|c}
+\begin{tabular}{r|p{0.9\columnwidth}}
 \hline
 \textbf{ID} & \textbf{Title} \\\hline
-dtsbzti & Fox News mocked for alert that Trump spent weekend working at White House \\\hline
-
+dnzno4z & Diplomat regrets new turn with U.S \\\hline
+dfs0vzl & Federal judge blocks Indiana abortion ultrasound mandate \\\hline
+dop6avh & President Trump Promotes Book by Wonderful Pastor Who Says Satan Founded the Catholic Church\\\hline
+dqsb8v2 & Prosecutors say longtime Manafort colleague has ties to Russian intelligence, the first such allegation by the special counsel\\\hline
+dhsmsbd & Anderson Cooper to Trump surrogate: 'If he took a dump on his desk, you'd defend it' \\\hline
+dht0d5u & WH Official: NYT, WaPo Reports Are 'Coordinated Attack' on Trump\\\hline
+dryjzw2 & Russian tankers reportedly smuggling oil to North Korea: Trump has been silent, though one day earlier, he blasted China for the same thing.\\\hline
+dkxzvnm & Ben Shapiro: 'Views Should Never be Banned'\\\hline
+dlbi7zb & Feinstein: We Can't Increase Immigration Enforcement Because No One Will Pick Our Fruit \\\hline
+dmtjwsg &  Mr. President, They're Never Going To Like You\\\hline
 \end{tabular}}
 \label{table1}
 \end{table}
@@ -99,39 +110,49 @@ dtsbzti & Fox News mocked for alert that Trump spent weekend working at White Ho
 
 \begin{table}[!h]
 \center
-\caption{Top 10 negtive stories}
+\caption{Top 10 negative stories}
 \scalebox{0.9}{
-\begin{tabular}{r|c}
+\begin{tabular}{r|p{0.9\columnwidth}}
 \hline
 \textbf{ID} & \textbf{Title} \\\hline
-dtsbzti & Fox News mocked for alert that Trump spent weekend working at White House \\\hline
-
+dtl0kfs & FBI director prepared to issue rebuttal if Nunes memo released \\\hline
+den7nsu & Adding a Dislike Button to Twitter Could Neutralize Trump's Social Media Presence\\\hline
+di419p4 & 'This is off the map': Former intelligence officials say the reported Kushner-Russia plan is unlike anything they've ever seen\\\hline
+dhnhxbt & Graham invites Comey to testify before Senate panel  \\\hline
+diw3ehp & Rep. DeSantis: Man Asked Whether Republicans or Dems Were on Field Before Scalise Shooting\\\hline
+dozvoc1 & Former President Obama called for jury duty in Chicago \\\hline
+dg76w4g & Trump Says He May Freeze Subsidies to the Poor Until Democrats Repeal Obamacare\\\hline
+dhc6yws & Republican Senator Graham to examine Trump's business deals: CNN\\\hline
+di8wivz & GOP taps anti-Clinton strategy to damage Elizabeth Warren early \\\hline
+dje8p0t & Russian Agents Used High Tech Alien Technology To Collude With Trump While Hiding Under James Comey's Floorboards, Sources Say \\\hline
 \end{tabular}}
 \label{table2}
 \end{table}
 
 
-\section{Create TWO scatterplots where the X axis is the submission score}
-The Figure.\ref{fig:5} and Figure.\ref{fig:6} create TWO scatterplots where the X axis is the submission score, and a second where the X axis is the comment score, and the Y access is the percentage positive and negative. The two different colors for positive and negative.
+\section{Scatterplots of Submission Score and Comment Score}
+
+The Figure.\ref{fig:5} and Figure.\ref{fig:6} are the scatterplots where the X axis is the submission score, and a second where the X axis is the comment score, and the Y access is the percentage positive and negative. The two different colors for positive and negative.
 \begin{figure}[!h]
       \centering
     \begin{subfigure}
         \centering
-        \includegraphics[width=0.7\textwidth]{../plots/part5_com.png}
+        \includegraphics[width=0.65\textwidth]{../plots/part5_com.png}
         \caption{Sentiment by comment score}
         \label{fig:5}
     \end{subfigure}%
     \vspace{1em}
     \begin{subfigure}
        \centering
-        \includegraphics[width=0.7\textwidth]{../plots/part5_sub.png}
+        \includegraphics[width=0.65\textwidth]{../plots/part5_sub.png}
         \caption{Sentiment by submission score}
         \label{fig:6}
     \end{subfigure}
 \end{figure}
 
 
-\section{Produce the ROC curves}
+\section{Producing the ROC curves}
+
 The Figure.\ref{fig:7} plot the ROC for the classifier.
 \begin{figure}[!h]
      \begin{center}
@@ -143,10 +164,18 @@ The Figure.\ref{fig:7} plot the ROC for the classifier.
    \label{fig:7}
 \end{figure}
 
+\section {Summarizing finding}
 
- 
-\section {summarizing your finding}
+Through the change of the time curve, we can clearly see that Trump's positive comment has steadily and slightly increased with the increase of Trump's ruling time. However, on the whole, the fact that the majority of the comments about President Trump is negative did not change at all.
+
+What's more, surprisingly, the distribution of positive and negative sentiment towards Trump across the US States is not based on the states that we envisioned to support Republicans or Democrats. In other words, there is no significant difference between the states.
+
+What we do expect is that the comment's sentiment differs in different stories. People inclined to express their negative comment for the Trump Russia scandal, the performance of Trump in social media and some crazy and some his irresponsible speech. But when it comes to immigration and religion, people have more ratio of positive sentiment.
+
+As far as I am concerned, all the mentioned phenomenon can be explained by an extremely important and essential question that who are the voters of Trump, which is also the reason why Trump won the election the president of America. According to plenty of sociology and political literature, the claim that white working-class voters were a crucial block of support for Trump in the 2016 presidential election has been the consensus in the academic. It is the silent majority that makes Trump become president and at the same time those people's opinion and sentiment toward Trump is very difficult to detect by political blog statistics or public opinion poll.
+\newpage
 \section {Question 1}
+
 Take a look at $labeled\_data.csv$ Write the functional dependencies implied by the data.
 
 \textbf {Answer:} The $Input\_id$ is the primary key of the scheme. So the $Input\_id \to labeldem$,  $Input\_id \to labelgop$, $Input\_id \to labeldjt$ and their combinations can be implied. 
