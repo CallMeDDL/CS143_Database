@@ -22,4 +22,7 @@ Built a Web site on movies, actors and their reviews, supported by a relational 
 - Wrote a function in Python to parse and clean horribly messy text from Reddit politics comments into a smooth format.
 2. Transforming Data and Training Classifier  
 - Transformed the comment data into unigrams, bigrams and trigrams features
-- Trained a classifier to determine the sentiment toward Democrats and Republicans of a comment using a Spark package called mllib.
+- Trained a classifier to determine the sentiment toward Democrats and Republicans of a comment on Spark
+3. Model Evaluation
+- Run the classifiers on data on Reddit blog from 2016 to 2018.
+- Analysised the result data and found the relation between people's sentiment towards resident Trump and states, time or story.
